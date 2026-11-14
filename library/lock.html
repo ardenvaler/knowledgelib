@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f4ee">
+<title>Arden’s Knowledge Library</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='8' width='4.6' height='19' rx='1.4' fill='%23D97524'/%3E%3Crect x='8.6' y='5' width='4.6' height='22' rx='1.4' fill='%23E0AC00'/%3E%3Crect x='14.2' y='9' width='4.6' height='18' rx='1.4' fill='%232A57C4'/%3E%3Crect x='19.8' y='6' width='4.6' height='21' rx='1.4' fill='%235B5CE6'/%3E%3Crect x='25.4' y='10' width='4.6' height='17' rx='1.4' fill='%230B7A5E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{FONTS}}">
+<script>(function(){var m=null;try{m=JSON.parse(localStorage.getItem('kl.mode'))}catch(e){}if(m!=='light'&&m!=='dark')m=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.mode=m;try{for(var i=0;i<sessionStorage.length;i++)if(sessionStorage.key(i).indexOf('kl:')===0)document.documentElement.className='auto'}catch(e){}})()</script>
+<style>
+:root, html[data-mode="light"] { color-scheme: light; --bg: #f6f4ee; --dots: rgba(62,54,128,.085); --surface: #fff; --ink: #191a33; --muted: #5a5d79; --faint: #8a8da6; --line: #e7e4ec; --line-2: #d4d1dd; --accent: #4f46e5; --accent-soft: #ecebff; --pink: #ff5f9e; --amber: #f5a623; --sky: #2f95f0; --bad: #d03b3b; --shadow: 0 2px 6px rgba(25,26,51,.08), 0 30px 60px -24px rgba(25,26,51,.38); }
+html[data-mode="dark"] { color-scheme: dark; --bg: #0d0e1b; --dots: rgba(170,172,255,.075); --surface: #15172a; --ink: #eeeefa; --muted: #a9abc8; --faint: #7d809e; --line: #262a45; --line-2: #363b60; --accent: #a3a7ff; --accent-soft: #262a5c; --pink: #ff8fbd; --amber: #ffc865; --sky: #7cc4ff; --bad: #ff7b7b; --shadow: 0 2px 6px rgba(0,0,0,.4), 0 30px 60px -24px rgba(0,0,0,.85); }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; display: grid; place-items: center; min-height: 100vh; min-height: 100dvh; padding: 24px 16px; background: var(--bg); color: var(--ink); font: 400 16px/1.5 "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -2; background-image: radial-gradient(var(--dots) 1.15px, transparent 1.3px); background-size: 22px 22px; }
+.blob { position: fixed; z-index: -1; width: 46vmax; height: 46vmax; border-radius: 50%; filter: blur(60px); opacity: .5; pointer-events: none; }
+.blob.a { left: -14vmax; top: -16vmax; background: color-mix(in oklab, var(--sky) 45%, transparent); animation: drift 18s ease-in-out infinite alternate; }
+.blob.b { right: -16vmax; bottom: -18vmax; background: color-mix(in oklab, var(--pink) 40%, transparent); animation: drift 22s ease-in-out infinite alternate-reverse; }
+@keyframes drift { to { transform: translate(6vmax, 4vmax) scale(1.08); } }
+.card { position: relative; width: min(440px, 100%); padding: 34px 32px 28px; border-radius: 28px; border: 1px solid var(--line); background: radial-gradient(circle at 92% 6%, color-mix(in oklab, var(--pink) 16%, transparent), transparent 44%), radial-gradient(circle at 4% 100%, color-mix(in oklab, var(--amber) 18%, transparent), transparent 46%), var(--surface); box-shadow: var(--shadow); text-align: center; }
+.logo { width: 54px; height: 54px; margin: 0 auto 12px; display: block; color: var(--ink); }
+.eyebrow { margin: 0 0 6px; font: 500 11.5px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+h1 { margin: 0; font: 800 40px/.98 "Fraunces", Georgia, serif; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144; letter-spacing: -.025em; background: linear-gradient(95deg, var(--ink) 30%, var(--accent) 62%, var(--pink) 82%, var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: .05em; }
+h1 span { display: block; font-style: italic; font-weight: 500; font-size: .5em; line-height: 1.2; margin-bottom: .14em; }
+.sub { margin: 12px 0 22px; color: var(--muted); }
+form { display: grid; gap: 14px; justify-items: center; }
+.pin { position: relative; display: block; cursor: text; }
+.pin input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; border: 0; font-size: 16px; caret-color: transparent; -webkit-appearance: none; appearance: none; letter-spacing: 3em; z-index: 2; }
+.cells { display: flex; gap: 9px; }
+.cells i { display: grid; place-items: center; width: 46px; height: 56px; border-radius: 14px; border: 1.5px solid var(--line-2); background: var(--surface); font-style: normal; transition: border-color .2s, transform .3s cubic-bezier(.3,1.4,.5,1), box-shadow .2s; }
+.cells i::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); transform: scale(0); transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.cells i.on::after { transform: scale(1); }
+.cells i.cur { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.pin input:focus ~ .cells i.cur::before { content: ""; position: absolute; width: 2px; height: 22px; background: var(--accent); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+form.bad .cells { animation: shake .42s cubic-bezier(.36,.07,.19,.97); }
+form.bad .cells i { border-color: var(--bad); }
+@keyframes shake { 20%, 80% { transform: translateX(-4px); } 40%, 60% { transform: translateX(6px); } 50% { transform: translateX(-6px); } }
+.msg { min-height: 22px; margin: 0; font-weight: 600; color: var(--bad); }
+.go { height: 48px; width: 100%; max-width: 330px; border: 0; border-radius: 14px; color: #fff; font: 700 16px/1 "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif; background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 55%, var(--pink))); box-shadow: 0 10px 22px -10px color-mix(in oklab, var(--accent) 80%, transparent); cursor: pointer; transition: transform .3s cubic-bezier(.3,1.4,.5,1), opacity .2s; }
+html[data-mode="dark"] .go { color: #10122e; }
+.go:hover { transform: translateY(-2px); }
+.go:disabled { opacity: .55; cursor: default; transform: none; }
+.stay { display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; color: var(--muted); cursor: pointer; }
+.stay input { width: 17px; height: 17px; accent-color: var(--accent); }
+.spines { display: flex; justify-content: center; align-items: flex-end; gap: 6px; height: 46px; margin: 24px auto 0; padding-bottom: 6px; border-bottom: 3px solid color-mix(in oklab, var(--ink) 35%, transparent); width: 128px; }
+.spines i { width: 16px; border-radius: 4px 4px 2px 2px; transform-origin: bottom; transition: transform .4s cubic-bezier(.3,1.4,.5,1); }
+.spines i:nth-child(1) { height: 32px; background: #D97524; } .spines i:nth-child(2) { height: 38px; background: #E0AC00; } .spines i:nth-child(3) { height: 30px; background: #2A57C4; } .spines i:nth-child(4) { height: 36px; background: #5B5CE6; } .spines i:nth-child(5) { height: 28px; background: #0B7A5E; transform: rotate(12deg); }
+.busy .spines i { animation: bob .9s ease-in-out infinite; }
+.busy .spines i:nth-child(2) { animation-delay: .1s; } .busy .spines i:nth-child(3) { animation-delay: .2s; } .busy .spines i:nth-child(4) { animation-delay: .3s; } .busy .spines i:nth-child(5) { animation-delay: .4s; }
+@keyframes bob { 50% { transform: translateY(-8px) scaleY(1.06); } }
+.open .spines i { transform: translateY(-14px); }
+.note { margin: 14px 0 0; font-size: 13px; color: var(--faint); }
+html.auto .card { visibility: hidden; }
+@media (max-width: 420px) { .card { padding: 28px 18px 22px; } .cells { gap: 6px; } .cells i { width: 40px; height: 52px; } h1 { font-size: 36px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="blob a"></div><div class="blob b"></div>
+<main class="card" id="card">
+  <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="4.6" height="19" rx="1.4" fill="#D97524"/><rect x="8.6" y="5" width="4.6" height="22" rx="1.4" fill="#E0AC00"/><rect x="14.2" y="9" width="4.6" height="18" rx="1.4" fill="#2A57C4"/><rect x="19.8" y="6" width="4.6" height="21" rx="1.4" fill="#5B5CE6"/><rect x="25.4" y="10" width="4.6" height="17" rx="1.4" fill="#0B7A5E" transform="rotate(12 27.7 27)"/><rect x="1.5" y="27.4" width="29" height="2.2" rx="1.1" fill="currentColor" opacity=".5"/></svg>
+  <p class="eyebrow">Five dashboards · one door</p>
+  <h1><span>Arden’s</span>Knowledge Library</h1>
+  <p class="sub">Enter the PIN to open the library.</p>
+  <form id="f" autocomplete="off" novalidate>
+    <label class="pin" for="pin">
+      <input id="pin" name="pin" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" maxlength="{{LEN}}" aria-label="PIN" aria-describedby="msg" autofocus>
+      <span class="cells" aria-hidden="true">{{CELLS}}</span>
+    </label>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    <button class="go" id="go" type="submit">Open the library</button>
+    <label class="stay"><input type="checkbox" id="stay" checked> Stay unlocked in this tab</label>
+  </form>
+  <div class="spines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</main>
+<script id="payload" type="application/json">{{PAYLOAD}}</script>
+<script>
+(function () {
+  'use strict';
+  var P = JSON.parse(document.getElementById('payload').textContent);
+  var LEN = {{LEN}}, KEY = 'kl:' + P.id;
+  var form = document.getElementById('f'), pin = document.getElementById('pin'), msg = document.getElementById('msg');
+  var go = document.getElementById('go'), stay = document.getElementById('stay'), card = document.getElementById('card');
+  var cells = [].slice.call(document.querySelectorAll('.cells i'));
+  var ok = !!(window.crypto && crypto.subtle && window.TextEncoder && window.DecompressionStream && window.Response && Blob.prototype.stream);
+
+  function b64(s) { var bin = atob(s), u = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; }
+  function ub64(u) { var s = ''; for (var i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); }
+  function derive(p) {
+    return crypto.subtle.importKey('raw', new TextEncoder().encode(p), 'PBKDF2', false, ['deriveBits'])
+      .then(function (base) { return crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: b64(P.s), iterations: P.it }, base, 256); })
+      .then(function (bits) { return new Uint8Array(bits); });
+  }
+  function unlock(raw) {
+    return crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt'])
+      .then(function (key) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(P.iv) }, key, b64(P.ct)); })
+      .then(function (buf) { return new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'))).text(); });
+  }
+  function show(html) { document.open(); document.write(html); document.close(); }
+  function paint() {
+    var v = pin.value;
+    cells.forEach(function (c, i) { c.classList.toggle('on', i < v.length); c.classList.toggle('cur', i === Math.min(v.length, LEN - 1) && document.activeElement === pin); });
+  }
+
+  if (!ok) {
+    document.documentElement.className = '';
+    msg.textContent = 'This browser can’t decrypt the page.';
+    pin.disabled = go.disabled = stay.disabled = true;
+    return;
+  }
+  // stayed unlocked in this tab: open straight away
+  var saved = null;
+  try { saved = sessionStorage.getItem(KEY); for (var i = sessionStorage.length - 1; i >= 0; i--) { var k = sessionStorage.key(i); if (k.indexOf('kl:') === 0 && k !== KEY) sessionStorage.removeItem(k); } } catch (e) { saved = null; }
+  if (saved) {
+    unlock(b64(saved)).then(show, function () {
+      try { sessionStorage.removeItem(KEY); } catch (e) { /* ignore */ }
+      document.documentElement.className = '';
+      pin.focus();
+    });
+  } else document.documentElement.className = '';
+
+  var busy = false;
+  pin.addEventListener('input', function () {
+    var v = pin.value.replace(/\D/g, '').slice(0, LEN);
+    if (v !== pin.value) pin.value = v;
+    form.classList.remove('bad');
+    msg.textContent = '';
+    paint();
+    if (v.length === LEN) submit();
+  });
+  pin.addEventListener('focus', paint);
+  pin.addEventListener('blur', paint);
+  form.addEventListener('submit', function (e) { e.preventDefault(); submit(); });
+
+  function submit() {
+    if (busy) return;
+    var p = pin.value;
+    if (p.length !== LEN) { msg.textContent = 'The PIN has ' + LEN + ' digits.'; pin.focus(); return; }
+    busy = true;
+    go.disabled = true;
+    go.textContent = 'Unlocking…';
+    card.classList.add('busy');
+    var raw;
+    derive(p).then(function (r) { raw = r; return unlock(r); }).then(function (html) {
+      if (stay.checked) { try { sessionStorage.setItem(KEY, ub64(raw)); } catch (e) { /* storage unavailable */ } }
+      card.classList.remove('busy');
+      card.classList.add('open');
+      go.textContent = 'Opening…';
+      setTimeout(function () { show(html); }, 220);
+    }, function () {
+      busy = false;
+      card.classList.remove('busy');
+      go.disabled = false;
+      go.textContent = 'Open the library';
+      msg.textContent = 'Wrong PIN.';
+      form.classList.remove('bad'); void form.offsetWidth; form.classList.add('bad');
+      pin.value = '';
+      paint();
+      pin.focus();
+    });
+  }
+  paint();
+})();
+</script>
+</body>
+</html>

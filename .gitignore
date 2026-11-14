@@ -1,0 +1,5 @@
+# Readable copies of the dashboards. This repository is public, so only the encrypted
+# build in dist/ is committed. Recover content/ with: LIBRARY_PIN=… node tools/unpack.mjs
+content/
+node_modules/
+.DS_Store
