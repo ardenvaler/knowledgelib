@@ -174,17 +174,17 @@
       "short": "Midterms",
       "kind": "Results snapshot",
       "topic": "Politics",
-      "date": "4 Nov 2026",
+      "date": "14 Nov 2026",
       "artifact": "https://claude.ai/artifact/7eTebPFce1nmNXPQpzKdC5",
-      "blurb": "Congress flips. Election night at 1:20 a.m. ET: the Senate and House, governors and ballot measures, exit polls, and every midterm since 1934.",
+      "blurb": "Congress flips. The 2026 midterms as of 14 Nov: Senate and House calls, governors and ballot measures, the races still counting, and every midterm since 1934.",
       "facts": [
         [
-          "53",
+          "55",
           "Senate seats, Democrats"
         ],
         [
-          "7",
-          "GOP seats flipped"
+          "256",
+          "House seats, Democrats (NBC)"
         ],
         [
           "{sources}",
@@ -241,7 +241,7 @@
           "#sources"
         ]
       ],
-      "iso": "2026-11-04"
+      "iso": "2026-11-14"
     },
     {
       "id": "brain",
@@ -486,7 +486,7 @@
       "t": 0.0274,
       "when": "4 Nov 2026, 1:20 a.m. ET",
       "title": "Congress flips",
-      "text": "The AP calls the Senate for Democrats overnight, and the networks project the House too. Seven Republican Senate seats flipped.",
+      "text": "The AP calls the Senate for Democrats overnight, and the networks project the House too. By 1:20 a.m., seven Republican Senate seats had flipped.",
       "anchor": "#overview",
       "sec": "Overview"
     },
@@ -535,6 +535,26 @@
       "text": "Four nonprofits ask a San Francisco court to stop OpenAI, Anthropic, Google, Meta and SpaceX’s AI unit from building models more capable than their current best.",
       "anchor": "#h-open",
       "sec": "Pressure radar",
+      "row": 1
+    },
+    {
+      "id": "midterm",
+      "t": 0.011,
+      "when": "10 Nov 2026",
+      "title": "Jordan to lead House Republicans",
+      "text": "House Republicans choose Jim Jordan over Steve Scalise, 106–73, to lead them in the minority.",
+      "anchor": "#next",
+      "sec": "What’s next",
+      "row": -1
+    },
+    {
+      "id": "midterm",
+      "t": 0.0082,
+      "when": "11 Nov 2026",
+      "title": "Mississippi flips to Colom",
+      "text": "The AP calls Mississippi for Scott Colom over Sen. Cindy Hyde-Smith: the eighth Republican seat to flip, for 55 Democratic seats with Alaska still counting.",
+      "anchor": "#senate",
+      "sec": "Senate",
       "row": 1
     }
   ]
