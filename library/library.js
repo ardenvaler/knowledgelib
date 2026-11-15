@@ -35,6 +35,12 @@
   });
   const TOTAL_SOURCES = DASH.filter(d => d.id !== 'prompts').reduce((s, d) => s + d.sources, 0);
   const TOTAL_SECTIONS = DASH.reduce((s, d) => s + d.secs.length, 0);
+  const BRIEFS = DASH.filter(d => d.id !== 'prompts');
+  const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+  const word = n => WORDS[n] || String(n);
+  const Word = n => { const w = word(n); return w.charAt(0).toUpperCase() + w.slice(1); };
+  // big cards so every row of the 6-column shelf is full: 2 big, rows of 3 small, and 2 big at the end when needed
+  const bigCard = (i, n) => n % 3 === 0 ? false : n < 3 ? true : (i < 2 || (n % 3 === 1 && i >= n - 2));
   const ROOT = document.documentElement;
 
   /* ---------- icons ---------- */
@@ -93,7 +99,7 @@
       </div>
       <div class="tiles">
         <div class="tile" data-tip="${esc(DASH.map(d => d.title).join(' · '))}"><span>Dashboards</span><b data-count="${DASH.length}">${DASH.length}</b><small>one PIN</small></div>
-        <div class="tile" data-tip="Distinct links to studies, data and reporting in the four briefs"><span>Sources linked</span><b data-count="${TOTAL_SOURCES}">${fmt(TOTAL_SOURCES)}</b><small>across four briefs</small></div>
+        <div class="tile" data-tip="Distinct links to studies, data and reporting in the ${word(BRIEFS.length)} briefs"><span>Sources linked</span><b data-count="${TOTAL_SOURCES}">${fmt(TOTAL_SOURCES)}</b><small>across ${word(BRIEFS.length)} briefs</small></div>
         <div class="tile" data-tip="Every section in the Contents below opens its dashboard at that spot"><span>Sections</span><b data-count="${TOTAL_SECTIONS}">${TOTAL_SECTIONS}</b><small>one click deep</small></div>
         <div class="tile" data-tip="From Greenland’s oldest ice in AMOC Watch to the 2100 forecasts"><span>Years in view</span><b data-count="122000">122,000</b><small>and on to 2100</small></div>
       </div>`;
@@ -116,11 +122,11 @@
   }
 
   function renderGlance() {
-    const briefs = DASH.filter(d => d.id !== 'prompts');
+    const briefs = BRIEFS;
     const newest = DASH.slice().sort((a, b) => (a.iso < b.iso ? 1 : -1))[0];
     $('#glance').innerHTML = `
       <h2>What’s on the shelf</h2>
-      <p class="g-sub">${fmt(TOTAL_SOURCES)} sources linked across four briefs, plus ${BY.prompts ? BY.prompts.facts[0][0] : ''} prompts.</p>
+      <p class="g-sub">${fmt(TOTAL_SOURCES)} sources linked across ${word(BRIEFS.length)} briefs, plus ${BY.prompts ? BY.prompts.facts[0][0] : ''} prompts.</p>
       <div class="stack" role="group" aria-label="Sources linked, by dashboard">
         ${briefs.map(d => `<button type="button" class="d-${d.id}" style="--n:${d.sources}" data-open="${d.id}" data-tip="<b>${esc(d.title)}</b><br>${d.sources} sources linked" aria-label="${esc(d.title)}: ${d.sources} sources linked"></button>`).join('')}
       </div>
@@ -139,7 +145,7 @@
   function renderShelf() {
     $('#shelf-grid').innerHTML = DASH.map((d, i) => {
       const chips = d.chips.map(a => d.secs.find(s => s.a === a)).filter(Boolean);
-      return `<article class="card d-${d.id}${i < 2 ? ' big' : ''}" data-id="${d.id}" style="--dbg:${d.bg};--dink:${d.ink}">
+      return `<article class="card d-${d.id}${bigCard(i, DASH.length) ? ' big' : ''}" data-id="${d.id}" style="--dbg:${d.bg};--dink:${d.ink}">
         <a class="stretch" href="#/${d.id}" data-open="${d.id}" aria-label="Open ${esc(d.title)}"></a>
         <div class="pv" aria-hidden="true">
           <div class="pv-bar"><i></i><i></i><i></i><span>${esc(d.title)}</span></div>
@@ -211,7 +217,7 @@
 
   function renderFoot() {
     $('#foot').innerHTML = `<div class="foot-in">
-      <div><b>Arden’s Knowledge Library</b><p>Five dashboards behind one PIN. Each is a copy of its Claude artifact as of ${esc(new Date(DATA.built).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))}, and opens exactly as it was published.</p></div>
+      <div><b>Arden’s Knowledge Library</b><p>${Word(DASH.length)} dashboards behind one PIN. Each is a copy of its Claude artifact as of ${esc(new Date(DATA.built).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))}, and opens exactly as it was published.</p></div>
       <div class="keys"><span><kbd>1</kbd>–<kbd>5</kbd> open a dashboard</span><span><kbd>/</kbd> search all five</span><span><kbd>Esc</kbd> back to the library</span></div>
       <button type="button" class="btn" data-lock>Lock the library</button>
     </div>`;
@@ -590,6 +596,8 @@
   /* ---------- search ---------- */
   const Search = (() => {
     const box = $('#search'), q = $('#q'), out = $('#results');
+    q.placeholder = `Search all ${word(DASH.length)} dashboards`;
+    q.setAttribute('aria-label', q.placeholder);
     const idx = [];
     DASH.forEach(d => {
       idx.push({ k: 'dash', id: d.id, t: d.title, s: `${d.kind} · ${d.topic}`, hay: norm([d.title, d.short, d.kind, d.topic, d.blurb].join(' ')) });

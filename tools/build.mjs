@@ -2,7 +2,7 @@
 //
 //   LIBRARY_PIN=123456 node tools/build.mjs
 //
-// 1. Bundles library/ (landing page, viewer, styles) with content/ (the five dashboards,
+// 1. Bundles library/ (landing page, viewer, styles) with content/ (the dashboards,
 //    their previews and section index) into one HTML document.
 // 2. gzip level 9, then AES-256-GCM. Key = PBKDF2-SHA256(PIN, 16-byte random salt, 600,000 rounds).
 //    Fresh salt and IV on every build.
@@ -71,6 +71,7 @@ const lock = read('library/lock.html')
   .replace('{{FONTS}}', () => FONTS)
   .replace(/\{\{LEN\}\}/g, () => String(PIN.length))
   .replace('{{CELLS}}', () => '<i></i>'.repeat(PIN.length))
+  .replace('{{COUNT}}', () => { const w = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'][manifest.dashboards.length]; return w || String(manifest.dashboards.length); })
   .replace('{{PAYLOAD}}', () => payload);
 
 const dist = resolve(ROOT, 'dist');
