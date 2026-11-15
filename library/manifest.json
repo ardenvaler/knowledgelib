@@ -64,6 +64,174 @@
       "iso": "2026-11-13"
     },
     {
+      "id": "first1000",
+      "title": "The First 1,000 Days",
+      "titleHtml": "The First <em>1,000</em> Days",
+      "short": "1,000 Days",
+      "kind": "Evidence guide",
+      "topic": "Early childhood",
+      "date": "15 Nov 2026",
+      "iso": "2026-11-15",
+      "artifact": "",
+      "blurb": "One dot for each day from conception to the second birthday: evidence-graded guides for pregnancy and the first two years, a father’s role, Indonesia’s programmes, and every claim linked to its source.",
+      "facts": [
+        [
+          "+101%",
+          "brain volume growth in year one"
+        ],
+        [
+          "1 in 10",
+          "fathers with perinatal depression"
+        ],
+        [
+          "{sources}",
+          "sources linked"
+        ]
+      ],
+      "bg": "#f3eadb",
+      "ink": "#2a1a28",
+      "span": [
+        35.9,
+        2.37
+      ],
+      "chips": [
+        "#days",
+        "#pregnancy",
+        "#dads",
+        "#indonesia"
+      ],
+      "sections": [
+        [
+          "The 1,000 days",
+          "#days"
+        ],
+        [
+          "Why 1,000 days",
+          "#why"
+        ],
+        [
+          "Pregnancy",
+          "#pregnancy"
+        ],
+        [
+          "Year one",
+          "#year-one"
+        ],
+        [
+          "Year two",
+          "#year-two"
+        ],
+        [
+          "Brain & language",
+          "#brain"
+        ],
+        [
+          "Nutrition",
+          "#nutrition"
+        ],
+        [
+          "Milestones",
+          "#milestones"
+        ],
+        [
+          "For dads",
+          "#dads"
+        ],
+        [
+          "Indonesia",
+          "#indonesia"
+        ],
+        [
+          "Scorecard",
+          "#scorecard"
+        ],
+        [
+          "Sources",
+          "#sources"
+        ]
+      ]
+    },
+    {
+      "id": "bilingual",
+      "title": "Two Languages, One Child",
+      "titleHtml": "<em>Two Languages,</em> One Child",
+      "short": "Bilingual",
+      "kind": "Plan check",
+      "topic": "Language",
+      "date": "15 Nov 2026",
+      "iso": "2026-11-15",
+      "artifact": "",
+      "blurb": "Raising a child in English and Bahasa Indonesia, checked against the research: an input mixer for the family’s week, the plan tested for Jakarta and abroad, and 26 myths graded.",
+      "facts": [
+        [
+          "1,899",
+          "families in De Houwer’s survey"
+        ],
+        [
+          "26",
+          "myths and claims graded"
+        ],
+        [
+          "{sources}",
+          "sources linked"
+        ]
+      ],
+      "bg": "#f6f5f9",
+      "ink": "#1a1830",
+      "span": [
+        113.9,
+        0.9
+      ],
+      "chips": [
+        "#mixer",
+        "#plan",
+        "#strategies",
+        "#scorecard"
+      ],
+      "sections": [
+        [
+          "Input Mixer",
+          "#mixer"
+        ],
+        [
+          "Our plan, checked",
+          "#plan"
+        ],
+        [
+          "The science",
+          "#science"
+        ],
+        [
+          "Strategies",
+          "#strategies"
+        ],
+        [
+          "Toolkit",
+          "#toolkit"
+        ],
+        [
+          "Bookshelf",
+          "#bookshelf"
+        ],
+        [
+          "Scorecard",
+          "#scorecard"
+        ],
+        [
+          "Researchers",
+          "#researchers"
+        ],
+        [
+          "Evidence",
+          "#evidence"
+        ],
+        [
+          "Sources",
+          "#sources"
+        ]
+      ]
+    },
+    {
       "id": "hf",
       "title": "The Hugging Face Breach",
       "titleHtml": "The <em>Hugging Face</em> Breach",
@@ -556,6 +724,100 @@
       "anchor": "#senate",
       "sec": "Senate",
       "row": 1
+    },
+    {
+      "id": "first1000",
+      "t": 35.3,
+      "when": "1991",
+      "title": "Folic acid prevents neural tube defects",
+      "text": "The MRC Vitamin Study finds folic acid taken before conception gives a 72% protective effect against repeat neural tube defects.",
+      "anchor": "#h-001",
+      "sec": "Pregnancy"
+    },
+    {
+      "id": "first1000",
+      "t": 18.9,
+      "when": "2008",
+      "title": "The Lancet names the critical window",
+      "text": "The Lancet’s series on maternal and child undernutrition calls pregnancy to 24 months a crucial window of opportunity.",
+      "anchor": "#why",
+      "sec": "Why 1,000 days",
+      "row": -1
+    },
+    {
+      "id": "first1000",
+      "t": 18.0,
+      "when": "2008",
+      "title": "The brain doubles in year one",
+      "text": "Rebecca Knickmeyer’s team at UNC finds total brain volume grows 101% in the first year of life.",
+      "anchor": "#m-015",
+      "sec": "Brain & language",
+      "row": 1
+    },
+    {
+      "id": "first1000",
+      "t": 11.8,
+      "when": "2015",
+      "title": "Early peanut prevents allergy",
+      "text": "The LEAP trial cuts peanut allergy at age 5 from 13.7% to 1.9% among infants with negative skin tests who ate peanut early.",
+      "anchor": "#h-032",
+      "sec": "Nutrition"
+    },
+    {
+      "id": "first1000",
+      "t": 2.37,
+      "when": "2024",
+      "title": "Indonesia passes its 1,000-day law",
+      "text": "Law No. 4/2024 gives mothers at least three months of leave and fathers two days, extendable by three.",
+      "anchor": "#indonesia",
+      "sec": "Indonesia"
+    },
+    {
+      "id": "bilingual",
+      "t": 113.9,
+      "when": "1913",
+      "title": "One parent, one language begins",
+      "text": "Jules Ronjat publishes his son’s French–German diary, the origin of the one-parent-one-language idea.",
+      "anchor": "#science-timeline",
+      "sec": "The science"
+    },
+    {
+      "id": "bilingual",
+      "t": 19.4,
+      "when": "2007",
+      "title": "1,899 families test OPOL",
+      "text": "Annick De Houwer’s survey of Flemish families finds one-parent-one-language neither necessary nor sufficient for an actively bilingual child.",
+      "anchor": "#strategies-compare",
+      "sec": "Strategies",
+      "row": -1
+    },
+    {
+      "id": "bilingual",
+      "t": 16.6,
+      "when": "2010",
+      "title": "Newborns prefer both languages",
+      "text": "Krista Byers-Heinlein, Tracey Burns and Janet Werker show newborns prefer, and tell apart, both languages heard in pregnancy.",
+      "anchor": "#science-perception",
+      "sec": "The science"
+    },
+    {
+      "id": "bilingual",
+      "t": 14.5,
+      "when": "2012",
+      "title": "Input predicts vocabulary and grammar",
+      "text": "Erika Hoff’s team links each language’s share of a toddler’s input to vocabulary and grammar in that language.",
+      "anchor": "#science-vocabulary",
+      "sec": "The science",
+      "row": 1
+    },
+    {
+      "id": "bilingual",
+      "t": 5.0,
+      "when": "2021",
+      "title": "The bilingual advantage shrinks",
+      "text": "Once publication bias is corrected, a meta-analysis puts the executive-function advantage at about zero.",
+      "anchor": "#science-cognition",
+      "sec": "The science"
     }
   ]
 }

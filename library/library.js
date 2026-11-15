@@ -50,6 +50,8 @@
     midterm: '<path d="M4 20.5h16M6 20.5V10h12v10.5"/><path d="m9.3 14.6 2 2 3.6-3.8"/><path d="M9 10V5h6v5"/>',
     brain: '<circle cx="12" cy="12" r="2.6"/><path d="M12 9.4V3.5M12 14.6v5.9M9.7 10.8 4.5 7.6M14.3 13.2l5.2 3.2M9.7 13.2l-5.2 3.2M14.3 10.8l5.2-3.2"/><circle cx="12" cy="3" r="1"/><circle cx="4" cy="7.3" r="1"/><circle cx="20" cy="16.7" r="1"/>',
     prompts: '<path d="M8 6 3 12l5 6M16 6l5 6-5 6M14 4l-4 16"/>',
+    first1000: '<path d="M12 21v-8"/><path d="M12 13c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5Z"/><path d="M12 15.5c0-3.2-2.4-5.2-5.6-5.2 0 3.2 2.4 5.2 5.6 5.2Z"/>',
+    bilingual: '<path d="M4 7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H9.5L6 16v-3.2A3 3 0 0 1 4 10Z"/><path d="M18.5 9.2A3 3 0 0 1 20 11.8v2.6a3 3 0 0 1-2 2.8V20l-3.2-2.6H12a3 3 0 0 1-2.4-1.2"/>',
     arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     open: '<path d="M7 17 17 7M9 7h8v8"/>',
     shelf: '<path d="M4 4v16M9 4v16M14 5l4 15M3 20h18"/>',
@@ -80,7 +82,7 @@
 
   /* ---------- hero ---------- */
   function renderHero() {
-    const deco = [['amoc', '40%', '12%', '0s'], ['hf', '90%', '37%', '-2.2s'], ['midterm', '92%', '9%', '-4.1s'], ['brain', '62%', '6%', '-1.3s'], ['prompts', '76%', '25%', '-5.4s']]
+    const deco = [['amoc', '40%', '12%', '0s'], ['hf', '90%', '37%', '-2.2s'], ['midterm', '92%', '9%', '-4.1s'], ['brain', '62%', '6%', '-1.3s'], ['prompts', '76%', '25%', '-5.4s'], ['first1000', '52%', '20%', '-3.2s'], ['bilingual', '80%', '15%', '-6.1s']].filter(([id]) => BY[id])
       .map(([id, x, y, dl]) => `<svg class="d-${id}" viewBox="0 0 24 24" style="left:${x};top:${y};animation-delay:${dl}" aria-hidden="true">${ICON[id]}</svg>`).join('');
     $('#hero').innerHTML = `
       <div class="deco">${deco}</div>
@@ -91,7 +93,7 @@
       </div>
       <h1 id="hero-title"><span class="h1-a">Arden’s</span>Knowledge Library</h1>
       <p class="hero-sub">${esc(M.tagline)}</p>
-      <p class="hero-lead">A baby’s brain under construction, the AI agents that broke out of their sandbox, the night Congress flipped, the ocean current that keeps Europe mild, and a prompt library that takes your dashboards apart. Open any of them right here. The library is always one tap away.</p>
+      <p class="hero-lead">A baby’s brain under construction, the first 1,000 days of a life, a child growing up in two languages, the AI agents that broke out of their sandbox, the night Congress flipped, the ocean current that keeps Europe mild, and a prompt library that takes your dashboards apart. Open any of them right here. The library is always one tap away.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#shelf" data-scroll="#shelf">${svg('shelf')}Browse the shelf</a>
         <button class="btn" type="button" data-surprise>${svg('dice')}Surprise me</button>
@@ -209,6 +211,7 @@
 
   /* ---------- contents ---------- */
   function renderTOC() {
+    $('#toc').style.setProperty('--toc-cols', DASH.length <= 5 ? DASH.length : Math.ceil(DASH.length / 2));
     $('#toc').innerHTML = DASH.map(d => `<div class="toc-col d-${d.id}">
       <button type="button" class="toc-h" data-open="${d.id}" data-peek="${d.id}"><span class="tn">${d.num}</span><span class="tt">${esc(d.title)}</span></button>
       <ol>${d.secs.map(s => `<li><button type="button" data-open="${d.id}" data-sec="${esc(s.a)}">${esc(s.t)}</button></li>`).join('')}</ol>

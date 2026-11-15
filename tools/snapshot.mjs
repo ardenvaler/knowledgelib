@@ -58,11 +58,17 @@ for (const d of manifest.dashboards) {
     return { title: document.title, description: clean((document.querySelector('meta[name=description]') || {}).content), nav, headings, bg, height: document.documentElement.scrollHeight };
   });
 
-  // Unique external links in the source = sources cited (fonts excluded).
-  const html = readFileSync(file, 'utf8');
-  const urls = new Set((html.match(/https?:\/\/[^\s"'<>`)\\]+/g) || [])
-    .map(u => u.replace(/[.,;]+$/, '').split('#')[0])
-    .filter(u => !/fonts\.(googleapis|gstatic)\.com|w3\.org|schema\.org/.test(u)));
+  // Sources cited = unique external links plus unique DOIs (a DOI and its doi.org link count once; fonts excluded).
+  const html = readFileSync(file, 'utf8').replace(/\\u003c/g, '<').replace(/\\\//g, '/');
+  const urls = new Set();
+  for (const raw of html.match(/https?:\/\/[^\s"'<>`)\\]+/g) || []) {
+    const u = raw.replace(/[.,;]+$/, '').split('#')[0];
+    if (/fonts\.(googleapis|gstatic)\.com|w3\.org|schema\.org/.test(u)) continue;
+    // any link that carries a DOI (doi.org or a publisher's /doi/ path) counts as that DOI
+    const doi = /(?:doi\.org\/|\/doi\/(?:abs\/|full\/|pdf\/)?)(10\.\d{4,9}\/[^?#]+)/i.exec(u);
+    urls.add(doi ? 'doi:' + decodeURIComponent(doi[1]).replace(/[.,;)]+$/, '').toLowerCase() : u);
+  }
+  for (const d of html.match(/\b10\.\d{4,9}\/[^\s"'<>`\\]+/g) || []) urls.add('doi:' + d.replace(/[.,;)]+$/, '').toLowerCase());
 
   const png = await page.screenshot({ clip: { x: 0, y: 0, width: W, height: Math.min(SHOT_H, info.height) }, fullPage: true });
   const webp = await converter.evaluate(async ({ b64, w }) => {

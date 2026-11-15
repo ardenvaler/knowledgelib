@@ -14,6 +14,8 @@
   --c-midterm: #2a57c4; --c-midterm-2: #c4352d;
   --c-brain: #5b5ce6; --c-brain-2: #ff5f9e;
   --c-prompts: #0b7a5e; --c-prompts-2: #2a3ad0;
+  --c-first1000: #af5331; --c-first1000-2: #6d8a5a;
+  --c-bilingual: #2f55d4; --c-bilingual-2: #d6283b;
   --shadow: 0 1px 2px rgba(25, 26, 51, .05), 0 8px 24px -14px rgba(25, 26, 51, .24);
   --shadow-lg: 0 2px 6px rgba(25, 26, 51, .08), 0 26px 52px -22px rgba(25, 26, 51, .38);
   --glare: rgba(255, 255, 255, .55);
@@ -38,6 +40,8 @@ html[data-mode="dark"] {
   --c-midterm: #7d9dff; --c-midterm-2: #ff6d62;
   --c-brain: #a3a7ff; --c-brain-2: #ff8fbd;
   --c-prompts: #3fd3a3; --c-prompts-2: #9aa4ff;
+  --c-first1000: #e3875a; --c-first1000-2: #9bba88;
+  --c-bilingual: #6585ef; --c-bilingual-2: #f0566a;
   --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 26px -14px rgba(0, 0, 0, .75);
   --shadow-lg: 0 2px 6px rgba(0, 0, 0, .4), 0 28px 56px -22px rgba(0, 0, 0, .85);
   --glare: rgba(255, 255, 255, .18);
@@ -47,6 +51,8 @@ html[data-mode="dark"] {
 .d-midterm { --c: var(--c-midterm); --c2: var(--c-midterm-2); }
 .d-brain { --c: var(--c-brain); --c2: var(--c-brain-2); }
 .d-prompts { --c: var(--c-prompts); --c2: var(--c-prompts-2); }
+.d-first1000 { --c: var(--c-first1000); --c2: var(--c-first1000-2); }
+.d-bilingual { --c: var(--c-bilingual); --c2: var(--c-bilingual-2); }
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -208,6 +214,10 @@ html[data-mode="dark"] .mode { background: linear-gradient(90deg, #2c2a4a, #2327
 .t-brain em { background: linear-gradient(92deg, var(--c-brain), var(--c-brain-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .t-prompts { font-family: "Archivo", var(--f-body); font-weight: 900; font-stretch: 112%; letter-spacing: -.03em; }
 .t-prompts em { text-decoration: underline; text-decoration-color: var(--c-prompts-2); text-decoration-thickness: .13em; text-underline-offset: .1em; }
+.t-first1000 { font-family: "Fraunces", var(--f-display); font-weight: 600; font-variation-settings: "SOFT" 60, "opsz" 96; letter-spacing: -.02em; }
+.t-first1000 em { font-style: italic; font-weight: 500; color: var(--c-first1000); }
+.t-bilingual { font-family: "Bricolage Grotesque", var(--f-body); font-weight: 800; letter-spacing: -.03em; }
+.t-bilingual em { font-style: normal; background: linear-gradient(90deg, var(--c-bilingual), #9b43a4 60%, var(--c-bilingual-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .cb { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.5; }
 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line-2); }
 .facts b { display: block; font: 700 21px/1.1 var(--f-display); font-variation-settings: "SOFT" 100, "opsz" 36; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -297,7 +307,7 @@ html[data-mode="dark"] .tp-open { color: #10122e; }
 .in-dots i.on { background: var(--c); transform: scale(1.15); }
 
 /* ---------- contents ---------- */
-.toc { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.toc { display: grid; grid-template-columns: repeat(var(--toc-cols, 5), minmax(0, 1fr)); gap: 14px; }
 .toc-col { position: relative; overflow: hidden; padding: 18px 12px 12px; border-radius: 20px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
 .toc-col::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--c), var(--c2)); }
 .toc-h { display: flex; align-items: baseline; gap: 8px; width: 100%; margin: 0 0 8px; padding: 0 6px; border: 0; background: none; text-align: left; }
@@ -431,7 +441,7 @@ html.viewing .deco svg, html.viewing .hero h1, html.viewing .tag.ok i, html.view
   .vswitch { display: none; }
   .vsec-btn { padding: 0 8px; }
   .vsec-btn .vs-l { display: none; }
-  .deco .d-amoc, .deco .d-hf, .deco .d-prompts { display: none; }
+  .deco .d-amoc, .deco .d-hf, .deco .d-prompts, .deco .d-first1000, .deco .d-bilingual { display: none; }
   .stops { gap: 0; }
   .stop { min-width: 0; }
   .stop i { width: 8px; height: 8px; border-width: 2px; }
