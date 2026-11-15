@@ -4,80 +4,64 @@
   "today": "2026-11-14",
   "dashboards": [
     {
-      "id": "amoc",
-      "title": "AMOC Watch",
-      "titleHtml": "AMOC <em>Watch</em>",
-      "short": "AMOC",
-      "kind": "Status brief",
-      "topic": "Climate",
-      "date": "30 Oct 2026",
-      "artifact": "https://claude.ai/artifact/TNLxwFwerWSqGKmrmhbt4B",
-      "blurb": "The Atlantic’s conveyor is slowing. Turn the globe, push a tipping-point model past the edge, and read 122,000 years of Greenland ice against the 2026 studies.",
+      "id": "brain",
+      "title": "What’s Going On in There, Revisited",
+      "titleHtml": "What’s Going On <em>in There?</em> Revisited",
+      "short": "Baby brain",
+      "kind": "Book, revisited",
+      "topic": "Neuroscience",
+      "date": "13 Nov 2026",
+      "artifact": "https://claude.ai/artifact/WufLw1vfvzothcfvbhd4KX",
+      "blurb": "Lise Eliot’s 1999 book on the infant brain, chapter by chapter, checked against research through 2025, with a brain you can grow from conception to age six.",
       "facts": [
         [
-          "17M m³",
-          "of water a second"
+          "17",
+          "chapters"
         ],
         [
-          "122,000",
-          "years of ice core"
+          "43",
+          "findings checked"
         ],
         [
           "{sources}",
           "sources linked"
         ]
       ],
-      "bg": "#eef4f6",
-      "ink": "#0b1c26",
+      "bg": "#f6f7ff",
+      "ink": "#1b1e45",
       "span": [
-        122000,
-        -73.1
+        27.5,
+        0.87
       ],
       "chips": [
-        "#machine",
-        "#ice",
-        "#forecasts",
-        "#odds"
+        "#development",
+        "#map",
+        "#chapters",
+        "#scorecard"
       ],
       "sections": [
         [
-          "The machine",
-          "#machine"
+          "Development timeline",
+          "#development"
         ],
         [
-          "The switch",
-          "#switch"
+          "Brain map",
+          "#map"
         ],
         [
-          "Memory in the ice",
-          "#ice"
+          "Chapters",
+          "#chapters"
         ],
         [
-          "The evidence",
-          "#evidence"
-        ],
-        [
-          "The forecasts",
-          "#forecasts"
-        ],
-        [
-          "2026, study by study",
-          "#year"
-        ],
-        [
-          "If it tips",
-          "#impacts"
-        ],
-        [
-          "What moves the odds",
-          "#odds"
+          "Scorecard",
+          "#scorecard"
         ],
         [
           "Sources",
           "#sources"
         ]
       ],
-      "iso": "2026-10-30"
+      "iso": "2026-11-13"
     },
     {
       "id": "hf",
@@ -244,64 +228,80 @@
       "iso": "2026-11-14"
     },
     {
-      "id": "brain",
-      "title": "What’s Going On in There, Revisited",
-      "titleHtml": "What’s Going On <em>in There?</em> Revisited",
-      "short": "Baby brain",
-      "kind": "Book, revisited",
-      "topic": "Neuroscience",
-      "date": "13 Nov 2026",
-      "artifact": "https://claude.ai/artifact/WufLw1vfvzothcfvbhd4KX",
-      "blurb": "Lise Eliot’s 1999 book on the infant brain, chapter by chapter, checked against research through 2025, with a brain you can grow from conception to age six.",
+      "id": "amoc",
+      "title": "AMOC Watch",
+      "titleHtml": "AMOC <em>Watch</em>",
+      "short": "AMOC",
+      "kind": "Status brief",
+      "topic": "Climate",
+      "date": "30 Oct 2026",
+      "artifact": "https://claude.ai/artifact/TNLxwFwerWSqGKmrmhbt4B",
+      "blurb": "The Atlantic’s conveyor is slowing. Turn the globe, push a tipping-point model past the edge, and read 122,000 years of Greenland ice against the 2026 studies.",
       "facts": [
         [
-          "17",
-          "chapters"
+          "17M m³",
+          "of water a second"
         ],
         [
-          "43",
-          "findings checked"
+          "122,000",
+          "years of ice core"
         ],
         [
           "{sources}",
           "sources linked"
         ]
       ],
-      "bg": "#f6f7ff",
-      "ink": "#1b1e45",
+      "bg": "#eef4f6",
+      "ink": "#0b1c26",
       "span": [
-        27.5,
-        0.87
+        122000,
+        -73.1
       ],
       "chips": [
-        "#development",
-        "#map",
-        "#chapters",
-        "#scorecard"
+        "#machine",
+        "#ice",
+        "#forecasts",
+        "#odds"
       ],
       "sections": [
         [
-          "Development timeline",
-          "#development"
+          "The machine",
+          "#machine"
         ],
         [
-          "Brain map",
-          "#map"
+          "The switch",
+          "#switch"
         ],
         [
-          "Chapters",
-          "#chapters"
+          "Memory in the ice",
+          "#ice"
         ],
         [
-          "Scorecard",
-          "#scorecard"
+          "The evidence",
+          "#evidence"
+        ],
+        [
+          "The forecasts",
+          "#forecasts"
+        ],
+        [
+          "2026, study by study",
+          "#year"
+        ],
+        [
+          "If it tips",
+          "#impacts"
+        ],
+        [
+          "What moves the odds",
+          "#odds"
         ],
         [
           "Sources",
           "#sources"
         ]
       ],
-      "iso": "2026-11-13"
+      "iso": "2026-10-30"
     },
     {
       "id": "prompts",

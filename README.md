@@ -1,8 +1,8 @@
 # Arden's Knowledge Library
 
 Five food-for-thought dashboards behind one PIN:
-**AMOC Watch**, **The Hugging Face Breach**, **Midterm Night 2026**,
-**What's Going On in There, Revisited** and the **Prompt Library**.
+**What's Going On in There, Revisited**, **The Hugging Face Breach**, **Midterm Night 2026**,
+**AMOC Watch** and the **Prompt Library**.
 
 Netlify project: `ardens-knowledge-library` (https://ardens-knowledge-library.netlify.app). The rules it follows are in [RULES.md](RULES.md).
 
@@ -42,5 +42,6 @@ To change the PIN, unpack with the old one and build with the new one. The PIN n
 
 ## Deploying
 
+Only deploy when the owner asks: each deploy uses Netlify credits, and pushing to GitHub does not deploy.
 The Netlify project is `ardens-knowledge-library`. Deploy only `netlify.toml` and `dist/`, not the whole working
 copy, so the readable `content/` folder is never uploaded.

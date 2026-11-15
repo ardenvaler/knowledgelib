@@ -4,10 +4,10 @@ One door to five food-for-thought dashboards.
 
 ## On the shelf
 
-1. **AMOC Watch**: the slowing Atlantic overturning circulation
+1. **What's Going On in There, Revisited**: Lise Eliot's book on the infant brain, checked against later research
 2. **The Hugging Face Breach**: AI agents that broke out of an evaluation sandbox
 3. **Midterm Night 2026**: the night Congress flipped
-4. **What's Going On in There, Revisited**: Lise Eliot's book on the infant brain, checked against later research
+4. **AMOC Watch**: the slowing Atlantic overturning circulation
 5. **Prompt Library**: the dashboards above (and others) taken apart into reusable prompts
 
 ## Rules
@@ -32,6 +32,7 @@ One door to five food-for-thought dashboards.
 
 ## House rules for future edits
 
+- **Never deploy to Netlify unless the owner explicitly asks.** Every deploy uses Netlify credits. Build and test locally, then commit and push. The repository is not linked to Netlify, so pushing to GitHub does not deploy anything.
 - The PIN lives only in the `LIBRARY_PIN` environment variable at build time. Never commit it, log it or write it to a file in the repo.
 - Readable copies of the dashboards (`content/`) stay out of git, because this repository is public. `tools/unpack.mjs` recovers them from `dist/` with the PIN.
 - When a dashboard changes on claude.ai, refresh its copy in `content/dashboards/`, run `tools/snapshot.mjs` for that dashboard, then rebuild.

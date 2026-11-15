@@ -85,14 +85,14 @@
       </div>
       <h1 id="hero-title"><span class="h1-a">Arden’s</span>Knowledge Library</h1>
       <p class="hero-sub">${esc(M.tagline)}</p>
-      <p class="hero-lead">The ocean current that keeps Europe mild, the AI agents that broke out of their sandbox, the night Congress flipped, a baby’s brain under construction, and a prompt library that takes your dashboards apart. Open any of them right here. The library is always one tap away.</p>
+      <p class="hero-lead">A baby’s brain under construction, the AI agents that broke out of their sandbox, the night Congress flipped, the ocean current that keeps Europe mild, and a prompt library that takes your dashboards apart. Open any of them right here. The library is always one tap away.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#shelf" data-scroll="#shelf">${svg('shelf')}Browse the shelf</a>
         <button class="btn" type="button" data-surprise>${svg('dice')}Surprise me</button>
         <button class="btn" type="button" data-focus-search>${svg('search')}Search everything <kbd>/</kbd></button>
       </div>
       <div class="tiles">
-        <div class="tile" data-tip="AMOC Watch, The Hugging Face Breach, Midterm Night 2026, What’s Going On in There, Revisited and Prompt Library"><span>Dashboards</span><b data-count="${DASH.length}">${DASH.length}</b><small>one PIN</small></div>
+        <div class="tile" data-tip="${esc(DASH.map(d => d.title).join(' · '))}"><span>Dashboards</span><b data-count="${DASH.length}">${DASH.length}</b><small>one PIN</small></div>
         <div class="tile" data-tip="Distinct links to studies, data and reporting in the four briefs"><span>Sources linked</span><b data-count="${TOTAL_SOURCES}">${fmt(TOTAL_SOURCES)}</b><small>across four briefs</small></div>
         <div class="tile" data-tip="Every section in the Contents below opens its dashboard at that spot"><span>Sections</span><b data-count="${TOTAL_SECTIONS}">${TOTAL_SECTIONS}</b><small>one click deep</small></div>
         <div class="tile" data-tip="From Greenland’s oldest ice in AMOC Watch to the 2100 forecasts"><span>Years in view</span><b data-count="122000">122,000</b><small>and on to 2100</small></div>
