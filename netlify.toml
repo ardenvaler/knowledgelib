@@ -2,10 +2,10 @@
 #
 # dist/ is built locally with tools/build.mjs, which needs the PIN and the readable dashboards.
 # Neither ever enters this public repository, and dist/ holds only ciphertext, so Netlify
-# publishes it as is. The build step only checks that the encrypted page is there.
+# publishes it as is. The build step only checks that the encrypted pages are there.
 [build]
   publish = "dist"
-  command = "test -s dist/index.html && test -s dist/robots.txt"
+  command = "test -s dist/index.html && test -s dist/robots.txt && test -s dist/brain/index.html"
 
 [[headers]]
   for = "/*"

@@ -1,0 +1,5 @@
+/* Library copy of "The First 1,000 Days": links and buttons stay put under the pointer.
+   They used to jump or grow on hover and shrink when pressed, which made them flicker at their edges
+   and miss clicks. Their colour, border and shadow changes stay. Loaded before the dashboard's own styles: keep !important. */
+.danger-btn:hover, .btn:hover, .btn:active, .play:hover, .play:active, .space:hover, .knt:hover { transform: none !important; }
+.danger-btn:hover, .play:hover { filter: brightness(1.08) !important; }

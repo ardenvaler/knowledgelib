@@ -1,0 +1,3 @@
+/* Library copy of "The Hugging Face Breach": the timeline's play button no longer grows under the pointer.
+   Its border colour change stays. Loaded before the dashboard's own styles: keep !important. */
+#tPlay:hover { transform: none !important; }

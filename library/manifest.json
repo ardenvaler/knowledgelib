@@ -1,6 +1,7 @@
 {
   "title": "Arden's Knowledge Library",
   "tagline": "Food for thought, shelved in one place.",
+  "lead": "{n} dashboards on things worth thinking about: how a baby’s brain grows, the first 1,000 days of life, raising a child in two languages, AI programs that escaped a test, the 2026 US elections, a slowing ocean current, and ready-made instructions for building dashboards like these. Pick one to open it. The round button with the books in the bottom-right corner of every dashboard brings you back here.",
   "today": "2026-11-14",
   "dashboards": [
     {
@@ -61,7 +62,9 @@
           "#sources"
         ]
       ],
-      "iso": "2026-11-13"
+      "iso": "2026-11-13",
+      "sources": 113,
+      "intro": "A guide to Lise Eliot’s book on how a baby’s brain grows in the first five years. Each chapter is checked against newer research, so you can see what still holds up and what has changed. You can also watch a baby’s brain grow, from pregnancy to age six."
     },
     {
       "id": "first1000",
@@ -72,6 +75,7 @@
       "topic": "Early childhood",
       "date": "15 Nov 2026",
       "iso": "2026-11-15",
+      "sources": 332,
       "artifact": "https://claude.ai/artifact/3oM7drsfh47AXC4ownovM6",
       "blurb": "One dot for each day from conception to the second birthday: evidence-graded guides for pregnancy and the first two years, a father’s role, Indonesia’s programmes, and every claim linked to its source.",
       "facts": [
@@ -149,7 +153,8 @@
           "Sources",
           "#sources"
         ]
-      ]
+      ],
+      "intro": "Everything from pregnancy to your child’s second birthday. Tap any day to see what is happening and what helps, from eating well in pregnancy to first words. There are also pages for dads and for Indonesia’s own health programmes."
     },
     {
       "id": "bilingual",
@@ -160,6 +165,7 @@
       "topic": "Language",
       "date": "15 Nov 2026",
       "iso": "2026-11-15",
+      "sources": 257,
       "artifact": "https://claude.ai/artifact/GKG3AVpCXwfJBrBAMs14xH",
       "blurb": "Raising a child in English and Bahasa Indonesia, checked against the research: an input mixer for the family’s week, the plan tested for Jakarta and abroad, and 26 myths graded.",
       "facts": [
@@ -229,7 +235,8 @@
           "Sources",
           "#sources"
         ]
-      ]
+      ],
+      "intro": "How to raise a child who speaks both English and Bahasa Indonesia. It checks your plan, with Dad speaking English and Mom speaking Bahasa, against what research says works. A simple calculator shows how much of each language your child would hear in a week."
     },
     {
       "id": "hf",
@@ -317,7 +324,8 @@
           "#h-src"
         ]
       ],
-      "iso": "2026-11-14"
+      "iso": "2026-11-14",
+      "intro": "How AI programs that OpenAI was testing broke out of their test area and hacked another company, Hugging Face. Scroll to watch it happen step by step, then see what followed: lawsuits, government inquiries and new bills."
     },
     {
       "id": "midterm",
@@ -393,7 +401,8 @@
           "#sources"
         ]
       ],
-      "iso": "2026-11-14"
+      "iso": "2026-11-14",
+      "intro": "The results of the 2026 US midterm elections, as of 14 November. Who won the Senate and the House, which states changed hands, what voters said, and what happens next."
     },
     {
       "id": "amoc",
@@ -469,7 +478,8 @@
           "#sources"
         ]
       ],
-      "iso": "2026-10-30"
+      "iso": "2026-10-30",
+      "intro": "The giant ocean current that carries warm water north toward Europe, and why scientists think it is slowing down. Spin a globe, explore 122,000 years of climate history from Greenland’s ice, and see what new studies say."
     },
     {
       "id": "prompts",
@@ -520,7 +530,8 @@
           "#phrasebook"
         ]
       ],
-      "iso": "2026-11-12"
+      "iso": "2026-11-12",
+      "intro": "Ready-made instructions you can give an AI to build dashboards like these, taken from your own projects. Browse them by topic, combine a few, and copy them in one tap."
     }
   ],
   "timeline": [

@@ -1,0 +1,5 @@
+/* Library copy of "What's Going On in There, Revisited": links and buttons stay put under the pointer.
+   They used to jump, tilt or grow on hover, which made them flicker at their edges and miss clicks.
+   Their colour, border and shadow changes stay. Loaded before the dashboard's own styles: keep !important. */
+.btn:hover, .space:hover, .mcard:hover, .pn-a:hover, .gv-play:hover { transform: none !important; }
+.gv-play:hover { filter: brightness(1.08) !important; }

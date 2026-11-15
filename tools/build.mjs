@@ -2,14 +2,18 @@
 //
 //   LIBRARY_PIN=123456 node tools/build.mjs
 //
-// 1. Bundles library/ (landing page, viewer, styles) with content/ (the dashboards,
-//    their previews and section index) into one HTML document.
-// 2. gzip level 9, then AES-256-GCM. Key = PBKDF2-SHA256(PIN, 16-byte random salt, 600,000 rounds).
-//    Fresh salt and IV on every build.
-// 3. Self-test: decrypts and gunzips in the same process and compares with the original.
-// 4. Writes only dist/index.html (the lock page plus the ciphertext) and dist/robots.txt,
-//    then checks that no readable dashboard text made it into dist/.
-// Node 20+, built-ins only.
+// Every page is its own encrypted file:
+//   dist/index.html        the library (landing page)
+//   dist/<id>/index.html   each dashboard, with the round Library button (library/back.js) added,
+//                          plus library/fixes/<id>.css when that file exists (small fixes to the
+//                          library's copy of a dashboard, e.g. buttons that jump on hover; they
+//                          come before the dashboard's own styles, so every rule needs !important)
+// All pages share one key: PBKDF2-SHA256(PIN, one 16-byte random salt per build, 600,000 rounds).
+// Each page gets its own random IV and is gzipped (level 9) before AES-256-GCM.
+// Unlocking any page stores the derived key in sessionStorage for this tab, so moving between
+// pages needs no PIN until the tab is closed.
+// Before writing, every page is decrypted again in this process and compared with the original,
+// and afterwards dist/ is searched for readable dashboard text. Node 20+, built-ins only.
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,6 +23,7 @@ import { randomBytes, pbkdf2Sync, createCipheriv, createDecipheriv, createHash }
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ITER = 600000;
 const FONTS = 'https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,700..900&family=Archivo:wdth,wght@62..125,800..900&family=Big+Shoulders+Display:wght@800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..900,0..100,0..1;1,9..144,400..900,0..100,0..1&family=Fredoka:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap';
+const BRIDGE_START = '<!--kl-back-->', BRIDGE_END = '<!--/kl-back-->';
 
 const fail = m => { console.error(m); process.exit(1); };
 const PIN = process.env.LIBRARY_PIN;
@@ -29,71 +34,104 @@ const read = p => readFileSync(resolve(ROOT, p), 'utf8');
 const manifest = JSON.parse(read('library/manifest.json'));
 if (!existsSync(resolve(ROOT, 'content/index.json'))) fail('content/ is missing. Run tools/unpack.mjs (or refresh the dashboards and run tools/snapshot.mjs) first. Nothing was built.');
 const index = JSON.parse(read('content/index.json'));
-
-const pages = {}, previews = {};
 for (const d of manifest.dashboards) {
-  pages[d.id] = read(`content/dashboards/${d.id}.html`);
-  previews[d.id] = 'data:image/webp;base64,' + readFileSync(resolve(ROOT, `content/previews/${d.id}.webp`)).toString('base64');
+  if (!/^[a-z0-9-]+$/.test(d.id)) fail(`Dashboard id "${d.id}" can't be used as a folder name. Nothing was built.`);
   if (!index[d.id]) fail(`content/index.json has no entry for "${d.id}". Run tools/snapshot.mjs ${d.id}. Nothing was built.`);
+  if (!existsSync(resolve(ROOT, `content/dashboards/${d.id}.html`))) fail(`content/dashboards/${d.id}.html is missing. Nothing was built.`);
 }
 
-// --- 1. bundle
-const data = { built: new Date().toISOString(), manifest, index, previews, pages };
-const json = JSON.stringify(data).replace(/</g, '\\u003c').replace(/[\u2028\u2029]/g, c => '\\u' + c.charCodeAt(0).toString(16));
-const inlineScript = s => s.replace(/<\/script/gi, '<\\/script');
-const html = read('library/shell.html')
+const scriptSafe = s => s.replace(/<\/script/gi, '<\\/script');
+const jsonSafe = o => JSON.stringify(o).replace(/</g, '\\u003c').replace(/[\u2028\u2029]/g, c => '\\u' + c.charCodeAt(0).toString(16));
+const WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// --- 1. the readable pages
+const built = new Date().toISOString();
+const landing = read('library/shell.html')
   .replace('/*{{CSS}}*/', () => read('library/library.css'))
-  .replace('/*{{JS}}*/', () => inlineScript(read('library/library.js')))
-  .replace('{{DATA}}', () => json)
+  .replace('/*{{JS}}*/', () => scriptSafe(read('library/library.js')))
+  .replace('{{DATA}}', () => jsonSafe({ built, manifest, index }))
   .replace('{{FONTS}}', () => FONTS);
-if (/\{\{[A-Z]+\}\}/.test(html.replace(json, ''))) fail('A placeholder was left in the library page. Nothing was built.');
+if (/\{\{[A-Z]+\}\}/.test(landing.replace(/<script id="kl-data"[\s\S]*?<\/script>/, ''))) fail('A placeholder was left in the library page. Nothing was built.');
 
-// --- 2. gzip + encrypt
-const plain = Buffer.from(html, 'utf8');
-const gz = gzipSync(plain, { level: 9 });
-const salt = randomBytes(16), iv = randomBytes(12);
+const back = '<script>' + scriptSafe(read('library/back.js')) + '</script>';
+const fixesFor = id => existsSync(resolve(ROOT, `library/fixes/${id}.css`)) ? '<style id="kl-fixes">' + read(`library/fixes/${id}.css`).replace(/<\//g, '<\\/') + '</style>' : '';
+const pages = [{ path: 'index.html', html: landing, title: manifest.title, eyebrow: `${WORDS[manifest.dashboards.length] || manifest.dashboards.length} dashboards · one door`, sub: 'Enter the PIN to open the library.', bg: 'var(--bg)' }];
+for (const d of manifest.dashboards) {
+  const src = read(`content/dashboards/${d.id}.html`);
+  if (!/<head(\s[^>]*)?>/i.test(src)) fail(`content/dashboards/${d.id}.html has no <head>. Nothing was built.`);
+  pages.push({
+    path: `${d.id}/index.html`,
+    // the markers let unpack.mjs take it all out again
+    html: src.replace(/<head(\s[^>]*)?>/i, m => m + BRIDGE_START + back + fixesFor(d.id) + BRIDGE_END),
+    title: `${d.title} · ${manifest.title}`,
+    eyebrow: manifest.title,
+    sub: `Enter the PIN to open “${d.title}”.`,
+    bg: d.bg || '#ffffff',
+  });
+}
+
+// --- 2. one key per build, one IV per page; encrypt and self-test
+const salt = randomBytes(16);
 const key = pbkdf2Sync(PIN, salt, ITER, 32, 'sha256');
-const cipher = createCipheriv('aes-256-gcm', key, iv);
-const ct = Buffer.concat([cipher.update(gz), cipher.final(), cipher.getAuthTag()]);
+const kid = createHash('sha256').update(salt).digest('base64url').slice(0, 16);
+const shell = read('library/page.html');
+let total = 0;
+for (const pg of pages) {
+  const plain = Buffer.from(pg.html, 'utf8');
+  const gz = gzipSync(plain, { level: 9 });
+  const iv = randomBytes(12);
+  const c = createCipheriv('aes-256-gcm', key, iv);
+  const ct = Buffer.concat([c.update(gz), c.final(), c.getAuthTag()]);
+  try {
+    const dec = createDecipheriv('aes-256-gcm', pbkdf2Sync(PIN, salt, ITER, 32, 'sha256'), iv);
+    dec.setAuthTag(ct.subarray(ct.length - 16));
+    if (!gunzipSync(Buffer.concat([dec.update(ct.subarray(0, ct.length - 16)), dec.final()])).equals(plain)) throw new Error('mismatch');
+  } catch (e) { fail(`Encryption self-test failed for ${pg.path}. Nothing was published.`); }
+  const payload = JSON.stringify({ v: 2, it: ITER, s: salt.toString('base64'), iv: iv.toString('base64'), ct: ct.toString('base64'), kid });
+  pg.out = shell
+    .replace('{{PAGE_TITLE}}', () => esc(pg.title))
+    .replace('{{EYEBROW}}', () => esc(pg.eyebrow))
+    .replace('{{SUB}}', () => esc(pg.sub))
+    .replace('{{BG}}', () => pg.bg)
+    .replace('{{KID}}', () => kid)
+    .replace('{{FONTS}}', () => FONTS)
+    .replace(/\{\{LEN\}\}/g, () => String(PIN.length))
+    .replace('{{CELLS}}', () => '<i></i>'.repeat(PIN.length))
+    .replace('{{PAYLOAD}}', () => payload);
+  if (/\{\{[A-Z_]+\}\}/.test(pg.out.replace(payload, ''))) fail(`A placeholder was left in the shell for ${pg.path}. Nothing was built.`);
+  pg.sizes = [plain.length, gz.length, pg.out.length];
+  total += pg.out.length;
+}
 
-// --- 3. self-test
-try {
-  const dec = createDecipheriv('aes-256-gcm', pbkdf2Sync(PIN, salt, ITER, 32, 'sha256'), iv);
-  dec.setAuthTag(ct.subarray(ct.length - 16));
-  const back = gunzipSync(Buffer.concat([dec.update(ct.subarray(0, ct.length - 16)), dec.final()]));
-  if (!back.equals(plain)) throw new Error('mismatch');
-} catch (e) { fail('Encryption self-test failed. Nothing was published.'); }
-
-// --- 4. write the lock page
-const id = createHash('sha256').update(ct).digest('base64').slice(0, 16);
-const payload = JSON.stringify({ v: 1, it: ITER, s: salt.toString('base64'), iv: iv.toString('base64'), ct: ct.toString('base64'), id });
-const lock = read('library/lock.html')
-  .replace('{{FONTS}}', () => FONTS)
-  .replace(/\{\{LEN\}\}/g, () => String(PIN.length))
-  .replace('{{CELLS}}', () => '<i></i>'.repeat(PIN.length))
-  .replace('{{COUNT}}', () => { const w = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'][manifest.dashboards.length]; return w || String(manifest.dashboards.length); })
-  .replace('{{PAYLOAD}}', () => payload);
-
+// --- 3. write
 const dist = resolve(ROOT, 'dist');
 if (existsSync(dist)) for (const f of readdirSync(dist)) rmSync(resolve(dist, f), { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
-writeFileSync(resolve(dist, 'index.html'), lock);
+for (const pg of pages) {
+  mkdirSync(dirname(resolve(dist, pg.path)), { recursive: true });
+  writeFileSync(resolve(dist, pg.path), pg.out);
+}
 writeFileSync(resolve(dist, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 
-// --- 5. nothing readable may leak into dist/
-const out = readFileSync(resolve(dist, 'index.html'), 'utf8');
-const probes = [];
+// --- 4. nothing readable may leak into dist/
+// (The PIN pages name their dashboard, and titles are public in library/manifest.json anyway,
+// so text that is already in the manifest is not probed. Everything else must stay encrypted.)
+const PUBLIC = JSON.stringify(manifest);
+const probes = ['kl-data', 'kl-back', 'time-machine', '__klBack'];
 for (const d of manifest.dashboards) {
-  probes.push(d.blurb.slice(0, 40));
-  (index[d.id].headings || []).slice(0, 4).forEach(h => h.text.length > 12 && probes.push(h.text));
+  probes.push(d.intro.slice(0, 40));
+  (index[d.id].headings || []).filter(h => h.text.length > 12 && !PUBLIC.includes(h.text)).slice(0, 6).forEach(h => probes.push(h.text));
 }
-probes.push('kl-data', 'time-machine', 'Viewer.open');
-const leaks = probes.filter(p => out.includes(p));
-if (leaks.length) {
-  rmSync(resolve(dist, 'index.html'));
-  fail('Readable text found in dist/index.html (' + leaks.slice(0, 3).join(' | ') + '). Nothing was published.');
+for (const pg of pages) {
+  const leaks = probes.filter(p => pg.out.includes(p));
+  if (leaks.length) {
+    rmSync(dist, { recursive: true, force: true });
+    fail(`Readable text found in dist/${pg.path} (${leaks.slice(0, 3).join(' | ')}). Nothing was published.`);
+  }
 }
 
 const kb = n => (n / 1024).toFixed(0) + ' KB';
-console.log(`Built dist/index.html: ${kb(lock.length)} (library ${kb(plain.length)} → gzip ${kb(gz.length)} → AES-256-GCM, PBKDF2 ×${ITER.toLocaleString('en-US')}, ${PIN.length}-digit PIN)`);
-console.log(`Self-test passed. No readable dashboard text in dist/. Payload id ${id}.`);
+for (const pg of pages) console.log(`  dist/${pg.path.padEnd(22)} ${kb(pg.sizes[2]).padStart(7)}  (page ${kb(pg.sizes[0])} → gzip ${kb(pg.sizes[1])})`);
+console.log(`Built ${pages.length} encrypted pages, ${kb(total)} in all. AES-256-GCM, PBKDF2 ×${ITER.toLocaleString('en-US')}, ${PIN.length}-digit PIN, key id ${kid}.`);
+console.log(`Self-test passed for every page. ${probes.length} readable-text probes found nothing in dist/.`);

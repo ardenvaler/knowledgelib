@@ -1,0 +1,4 @@
+/* Library copy of the Prompt Library: links and buttons stay put under the pointer.
+   They used to jump on hover or shrink when pressed, which made them flicker at their edges and miss clicks.
+   Their border and shadow changes stay. Loaded before the dashboard's own styles: keep !important. */
+.spine:hover, .recipe:hover, .btn:active { transform: none !important; }
