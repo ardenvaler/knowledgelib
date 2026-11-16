@@ -24,7 +24,7 @@ import { randomBytes, pbkdf2Sync, createCipheriv, createDecipheriv, createHash }
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ITER = 600000;
-const FONTS = 'https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,700..900&family=Archivo:wdth,wght@62..125,800..900&family=Big+Shoulders+Display:wght@800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..900,0..100,0..1;1,9..144,400..900,0..100,0..1&family=Fredoka:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap';
+const FONTS = 'https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,700..900&family=Archivo:wdth,wght@62..125,800..900&family=Big+Shoulders+Display:wght@800;900&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..900,0..100,0..1;1,9..144,400..900,0..100,0..1&family=Fredoka:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap';
 const BRIDGE_START = '<!--kl-back-->', BRIDGE_END = '<!--/kl-back-->';
 
 const fail = m => { console.error(m); process.exit(1); };

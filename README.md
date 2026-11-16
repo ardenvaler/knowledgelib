@@ -1,16 +1,17 @@
 # Arden's Knowledge Library
 
-Seven food-for-thought dashboards behind one PIN:
+Nine food-for-thought dashboards behind one PIN:
 **What's Going On in There, Revisited**, **The First 1,000 Days**, **Two Languages, One Child**,
-**The Hugging Face Breach**, **Midterm Night 2026**, **AMOC Watch** and the **Prompt Library**.
+**The Hugging Face Breach**, **Midterm Night 2026**, **AMOC Watch**, the **Prompt Library**,
+**Hong Wang & the Spinning Needle** and **Anak Krakatau**.
 
 Netlify project: `ardens-knowledge-library` (https://ardens-knowledge-library.netlify.app). The rules it follows are in [RULES.md](RULES.md).
 
 ## What you get
 
-- **A landing page** with the shelf of seven. Each card has a short, plain intro to its dashboard. It also has a Time Machine
+- **A landing page** with the shelf of nine. Each card has a short, plain intro to its dashboard. It also has a Time Machine
   you can drag across 122,000 years, Contents listing every section of every dashboard, and search across all of them.
-- **Each dashboard on its own page**: `/brain/`, `/first1000/`, `/bilingual/`, `/hf/`, `/midterm/`, `/amoc/`, `/prompts/`.
+- **Each dashboard on its own page**: `/brain/`, `/first1000/`, `/bilingual/`, `/hf/`, `/midterm/`, `/amoc/`, `/prompts/`, `/hongwang/`, `/krakatau/`.
   A dark **← Library** button sits in the bottom-right corner of every dashboard, and the browser's Back button works as usual.
   Both return you to the same spot on the landing page. Links to a section (`/amoc/#ice`) open right at it.
 - **One PIN per tab**: enter it once and every page in that tab opens without asking again, until the tab is closed or you
@@ -38,7 +39,7 @@ Netlify project: `ardens-knowledge-library` (https://ardens-knowledge-library.ne
 
 1. `LIBRARY_PIN=<pin> node tools/unpack.mjs` to recover `content/` (skip this if it's already there).
 2. Save the new version of the artifact's page as `content/dashboards/<id>.html`. The ids are `brain`, `first1000`,
-   `bilingual`, `hf`, `midterm`, `amoc` and `prompts`, and each one's claude.ai link is in the manifest.
+   `bilingual`, `hf`, `midterm`, `amoc`, `prompts`, `hongwang` and `krakatau`, and each one's claude.ai link is in the manifest.
 3. `node tools/snapshot.mjs <id>` to refresh its sections and source count.
 4. Update its intro, sections, Time Machine stops or `sources` (the dashboard's own count of its sources, where it states one) in `library/manifest.json` if they changed.
 5. `LIBRARY_PIN=<pin> node tools/build.mjs`, test it locally, then commit `dist/`.

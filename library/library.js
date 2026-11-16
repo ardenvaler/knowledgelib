@@ -288,6 +288,7 @@
     const host = $('#time');
     const stops = M.timeline.slice().sort((a, b) => b.t - a.t);
     const NOW = new Date(M.today + 'T12:00:00Z');
+    const TODAY = NOW.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
     const YEAR = NOW.getUTCFullYear() + (NOW - Date.UTC(NOW.getUTCFullYear(), 0, 1)) / 31557600000;
     const PAST = .87, LMAX = Math.log10(1 + 52 * 122000), LF = Math.log10(1 + 52 * 73.1);
     let W = 0, H = 0, G = 0, PW = 0, LH = 40, TOP = 34, AX = 34;
@@ -313,7 +314,7 @@
           <button type="button" class="step-btn" id="tm-next" aria-label="Next stop">${svg('next')}</button>
         </div>
         <div class="tm-tiles">
-          <div class="tile"><span>Looking</span><b id="tm-ago">–</b><small id="tm-ago-s">from 14 Nov 2026</small></div>
+          <div class="tile"><span>Looking</span><b id="tm-ago">–</b><small id="tm-ago-s">from ${TODAY}</small></div>
           <div class="tile"><span>Calendar</span><b id="tm-cal">–</b><small>approximate</small></div>
           <div class="tile"><span>In frame</span><b id="tm-in">–</b><div class="in-dots" id="tm-dots">${DASH.map(d => `<i class="d-${d.id}" data-tip="${esc(d.title)}"></i>`).join('')}</div></div>
           <div class="tile"><span>Stop</span><b id="tm-stop">–</b><small id="tm-stop-s"></small></div>
@@ -339,7 +340,7 @@
       else if (a * 12 >= 1.5) s = Math.round(a * 12) + ' months';
       else if (a * 52 >= 1.5) s = Math.round(a * 52) + ' weeks';
       else if (a * 365 >= 1.5) s = Math.round(a * 365) + ' days';
-      else return { big: 'Today', small: '14 Nov 2026' };
+      else return { big: 'Today', small: TODAY };
       return t >= 0 ? { big: s, small: 'ago' } : { big: s, small: 'from now' };
     }
     function calText(t) {
@@ -420,7 +421,7 @@
       pill.setAttribute('x', px);
       pt.setAttribute('x', px + w / 2);
       $('#tm-ago').textContent = ago.big;
-      $('#tm-ago-s').textContent = ago.small === 'ago' ? 'before 14 Nov 2026' : ago.small === 'from now' ? 'after 14 Nov 2026' : ago.small;
+      $('#tm-ago-s').textContent = ago.small === 'ago' ? 'before ' + TODAY : ago.small === 'from now' ? 'after ' + TODAY : ago.small;
       $('#tm-cal').textContent = calText(t);
       const inFrame = DASH.filter(d => {
         const lo = xOf(d.span[0]) - 8, hi = xOf(d.span[1]) + 8;

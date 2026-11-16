@@ -16,6 +16,8 @@
   --c-prompts: #0b7a5e; --c-prompts-2: #2a3ad0;
   --c-first1000: #af5331; --c-first1000-2: #6d8a5a;
   --c-bilingual: #2f55d4; --c-bilingual-2: #d6283b;
+  --c-hongwang: #0f8b8d; --c-hongwang-2: #a86a00;
+  --c-krakatau: #c0281b; --c-krakatau-2: #2b6f84;
   --shadow: 0 1px 2px rgba(25, 26, 51, .05), 0 8px 24px -14px rgba(25, 26, 51, .24);
   --shadow-lg: 0 2px 6px rgba(25, 26, 51, .08), 0 26px 52px -22px rgba(25, 26, 51, .38);
   --glare: rgba(255, 255, 255, .55);
@@ -42,6 +44,8 @@ html[data-mode="dark"] {
   --c-prompts: #3fd3a3; --c-prompts-2: #9aa4ff;
   --c-first1000: #e3875a; --c-first1000-2: #9bba88;
   --c-bilingual: #6585ef; --c-bilingual-2: #f0566a;
+  --c-hongwang: #5fd3c4; --c-hongwang-2: #f4b860;
+  --c-krakatau: #ff6a3d; --c-krakatau-2: #7ba3b3;
   --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 26px -14px rgba(0, 0, 0, .75);
   --shadow-lg: 0 2px 6px rgba(0, 0, 0, .4), 0 28px 56px -22px rgba(0, 0, 0, .85);
   --glare: rgba(255, 255, 255, .18);
@@ -54,6 +58,8 @@ html[data-mode="dark"] {
 .d-prompts { --c: var(--c-prompts); --c2: var(--c-prompts-2); }
 .d-first1000 { --c: var(--c-first1000); --c2: var(--c-first1000-2); }
 .d-bilingual { --c: var(--c-bilingual); --c2: var(--c-bilingual-2); }
+.d-hongwang { --c: var(--c-hongwang); --c2: var(--c-hongwang-2); }
+.d-krakatau { --c: var(--c-krakatau); --c2: var(--c-krakatau-2); }
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -207,6 +213,10 @@ html[data-mode="dark"] .mode { background: linear-gradient(90deg, #2c2a4a, #2327
 .t-first1000 { font-family: "Fraunces", var(--f-display); font-weight: 600; font-variation-settings: "SOFT" 60, "opsz" 96; letter-spacing: -.02em; }
 .t-first1000 em { font-style: italic; font-weight: 500; color: var(--c-first1000); }
 .t-bilingual { font-family: "Bricolage Grotesque", var(--f-body); font-weight: 800; letter-spacing: -.03em; }
+.t-hongwang { font-family: "Space Grotesk", var(--f-body); font-weight: 700; letter-spacing: -.03em; }
+.t-hongwang em { font-family: "Fraunces", var(--f-display); font-style: italic; font-weight: 500; letter-spacing: -.01em; color: var(--c-hongwang-2); }
+.t-krakatau { font-family: "Archivo", var(--f-body); font-weight: 800; letter-spacing: -.035em; }
+.t-krakatau em { font-style: normal; color: var(--c-krakatau); }
 .t-bilingual em { font-style: normal; background: linear-gradient(90deg, var(--c-bilingual), #9b43a4 60%, var(--c-bilingual-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 /* ---------- time machine ---------- */
 .mod-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 12px; margin: 60px 0 14px; }

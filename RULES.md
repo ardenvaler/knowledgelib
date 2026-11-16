@@ -1,6 +1,6 @@
 # Arden's Knowledge Library: the rules
 
-One door to seven food-for-thought dashboards.
+One door to nine food-for-thought dashboards.
 
 ## On the shelf
 
@@ -11,6 +11,8 @@ One door to seven food-for-thought dashboards.
 5. **Midterm Night 2026**: the 2026 US midterm results and what follows
 6. **AMOC Watch**: the Atlantic ocean current that may be slowing down
 7. **Prompt Library**: ready-made instructions for building dashboards like these
+8. **Hong Wang & the Spinning Needle**: the needle puzzle behind Hong Wang's 2026 Fields Medal
+9. **Anak Krakatau**: the volcano in the Sunda Strait, and why its real danger is a collapse, not a giant eruption
 
 ## Rules
 
@@ -25,7 +27,7 @@ One door to seven food-for-thought dashboards.
 
 | Rule | What the build does | How to check |
 | --- | --- | --- |
-| 1. Gateway | The landing page has the shelf of seven, the Time Machine, Contents (every section of every dashboard) and search across all of them. | Every dashboard and every section can be reached from the landing page. |
+| 1. Gateway | The landing page has the shelf of nine, the Time Machine, Contents (every section of every dashboard) and search across all of them. | Every dashboard and every section can be reached from the landing page. |
 | 2. Intros | Each card shows its number, kind, topic, date, title and the `intro` from `library/manifest.json`: two or three plain sentences. There are no screenshots and no hover previews. | Read the cards aloud: each says what the dashboard is, in everyday words. |
 | 3. Back button | Every dashboard page gets a dark **← Library** button, always visible, in the bottom-right corner: the spot that covers the fewest controls across all dashboards, on desktop, laptop, tablet and phone. (On short laptop screens The First 1,000 Days uses the bottom-left corner, because its pinned side panel reaches the right one.) The browser's Back button works too. Both bring you back to the same place on the landing page. | Open each dashboard, scroll anywhere, press the button: you land where you left the shelf. |
 | 4. Fast | Each dashboard is its own page (`/amoc/`, `/hf/` and so on). After the PIN, the key is kept for that browser tab, so every page opens without asking again. The landing page is about 55 KB, and pointing at a link fetches that dashboard ahead of the click. | A dashboard opens in about a second. A link to a section (e.g. `/amoc/#ice`) opens right at it, with no scrolling animation. |

@@ -1,8 +1,8 @@
 {
   "title": "Arden's Knowledge Library",
   "tagline": "Food for thought, shelved in one place.",
-  "lead": "{n} dashboards on things worth thinking about: how a baby’s brain grows, the first 1,000 days of life, raising a child in two languages, AI programs that escaped a test, the 2026 US elections, a slowing ocean current, and ready-made instructions for building dashboards like these. Pick one to open it. The “← Library” button in the bottom-right corner of every dashboard brings you back here.",
-  "today": "2026-11-14",
+  "lead": "{n} dashboards on things worth thinking about: how a baby’s brain grows, the first 1,000 days of life, raising a child in two languages, AI programs that escaped a test, the 2026 US elections, a slowing ocean current, ready-made instructions for building dashboards like these, a century-old puzzle about turning a needle, and a restless volcano in the Sunda Strait. Pick one to open it. The “← Library” button in the bottom-right corner of every dashboard brings you back here.",
+  "today": "2026-11-16",
   "dashboards": [
     {
       "id": "brain",
@@ -32,7 +32,7 @@
       "ink": "#1b1e45",
       "span": [
         27.5,
-        0.87
+        0.8755
       ],
       "chips": [
         "#development",
@@ -96,7 +96,7 @@
       "ink": "#2a1a28",
       "span": [
         35.9,
-        2.37
+        2.3755
       ],
       "chips": [
         "#days",
@@ -186,7 +186,7 @@
       "ink": "#1a1830",
       "span": [
         113.9,
-        0.9
+        0.9055
       ],
       "chips": [
         "#mixer",
@@ -265,8 +265,8 @@
       "bg": "#080b11",
       "ink": "#edf1f7",
       "span": [
-        0.523,
-        0.0055
+        0.5285,
+        0.011
       ],
       "chips": [
         "#h-open",
@@ -355,7 +355,7 @@
       "ink": "#131821",
       "span": [
         92,
-        -0.137
+        -0.1315
       ],
       "chips": [
         "#senate",
@@ -508,8 +508,8 @@
       "bg": "#eceef1",
       "ink": "#14161a",
       "span": [
-        0.0055,
-        0.0055
+        0.011,
+        0.011
       ],
       "chips": [
         "#library",
@@ -532,6 +532,172 @@
       ],
       "iso": "2026-11-12",
       "intro": "Ready-made instructions you can give an AI to build dashboards like these, taken from your own projects. Browse them by topic, combine a few, and copy them in one tap."
+    },
+    {
+      "id": "hongwang",
+      "title": "Hong Wang & the Spinning Needle",
+      "titleHtml": "Hong Wang &amp; the <em>Spinning Needle</em>",
+      "short": "Hong Wang",
+      "kind": "Explainer",
+      "topic": "Mathematics",
+      "date": "16 Nov 2026",
+      "artifact": "https://claude.ai/artifact/KYPaG9PnbVxqLVGD1nYwmq",
+      "blurb": "How little room do you need to turn a needle all the way around? Turn it yourself, measure dimension with boxes, and follow the climb to 3: how Hong Wang and Joshua Zahl settled the Kakeya conjecture in three dimensions.",
+      "facts": [
+        [
+          "35",
+          "her age at the Fields Medal"
+        ],
+        [
+          "127",
+          "pages in the proof"
+        ],
+        [
+          "{sources}",
+          "sources linked"
+        ]
+      ],
+      "bg": "#0c1424",
+      "ink": "#e9eef8",
+      "span": [
+        109.4,
+        0.316
+      ],
+      "chips": [
+        "#turn",
+        "#thick",
+        "#climb",
+        "#sources"
+      ],
+      "sections": [
+        [
+          "Kakeya’s question",
+          "#s-question"
+        ],
+        [
+          "Turn it yourself",
+          "#turn"
+        ],
+        [
+          "How thick is a set with no area?",
+          "#thick"
+        ],
+        [
+          "The climb to 3",
+          "#climb"
+        ],
+        [
+          "Her path",
+          "#path"
+        ],
+        [
+          "Why a needle puzzle matters",
+          "#why"
+        ],
+        [
+          "The class of 2026",
+          "#class"
+        ],
+        [
+          "Voices",
+          "#voices"
+        ],
+        [
+          "Numbers & sources",
+          "#sources"
+        ]
+      ],
+      "iso": "2026-11-16",
+      "intro": "How little room do you need to turn a needle all the way around? Scroll through a century of answers and turn the needle yourself. Then see how Hong Wang and Joshua Zahl settled the three-dimensional version in 2025, the work behind her 2026 Fields Medal."
+    },
+    {
+      "id": "krakatau",
+      "title": "Anak Krakatau",
+      "titleHtml": "Anak <em>Krakatau</em>",
+      "short": "Anak Krakatau",
+      "kind": "Volcano brief",
+      "topic": "Natural hazards",
+      "date": "16 Nov 2026",
+      "artifact": "https://claude.ai/artifact/8yFopeTmES8ZQGM5iQV7Px",
+      "blurb": "Is Anak Krakatau the biggest eruption on Earth? No, but it may be the deadliest small volcano. Scroll 143 years of the caldera, compare five eruptions, run the 2018 collapse, replay the 2026 episode and see where the ash went.",
+      "facts": [
+        [
+          "III",
+          "alert level since 9 Oct"
+        ],
+        [
+          "5 km",
+          "exclusion zone"
+        ],
+        [
+          "{sources}",
+          "sources linked"
+        ]
+      ],
+      "bg": "#14161a",
+      "ink": "#e6e4dd",
+      "span": [
+        143.22,
+        0
+      ],
+      "chips": [
+        "#scale",
+        "#mechanism",
+        "#episode",
+        "#sources"
+      ],
+      "sections": [
+        [
+          "The short answer",
+          "#answer"
+        ],
+        [
+          "Five eruptions, one axis",
+          "#scale"
+        ],
+        [
+          "Two ways to hurt you",
+          "#mechanism"
+        ],
+        [
+          "How tall is it?",
+          "#growth"
+        ],
+        [
+          "The 2026 episode",
+          "#episode"
+        ],
+        [
+          "Alert levels",
+          "#levels"
+        ],
+        [
+          "Where the ash went",
+          "#ash"
+        ],
+        [
+          "Minutes to the coast",
+          "#tsunami"
+        ],
+        [
+          "Could 1883 happen again?",
+          "#repeat"
+        ],
+        [
+          "What to do",
+          "#practical"
+        ],
+        [
+          "Voices",
+          "#voices"
+        ],
+        [
+          "Sources",
+          "#sources"
+        ]
+      ],
+      "iso": "2026-11-16",
+      "intro": "In September 2026 Anak Krakatau put ash on Jakarta and shut eight airports, and it is back at Level III. Scroll through 143 years of the volcano, then see why its real danger is a collapse into the sea, not a giant eruption."
     }
   ],
   "timeline": [
@@ -614,7 +780,7 @@
     },
     {
       "id": "brain",
-      "t": 0.87,
+      "t": 0.8755,
       "when": "Through 2025",
       "title": "The research check",
       "text": "Every chapter is checked against work published through 2025. Of 43 findings, 6 hold up, 10 are refined, 17 are revised, 2 are overturned and 8 are new since 1999.",
@@ -623,7 +789,7 @@
     },
     {
       "id": "hf",
-      "t": 0.523,
+      "t": 0.5285,
       "when": "7 May 2026",
       "title": "10,000 agents, safeties off",
       "text": "OpenAI starts a cyber evaluation in what it called a highly isolated environment. Model safeguards are switched off on purpose.",
@@ -632,8 +798,8 @@
     },
     {
       "id": "hf",
-      "t": 0.45,
-      "t2": 0.36,
+      "t": 0.4555,
+      "t2": 0.3655,
       "when": "May → July 2026",
       "title": "A secret message board",
       "text": "A request-forgery bug gives the agents write access to the internal package cache. They turn it into a hidden message board.",
@@ -643,7 +809,7 @@
     },
     {
       "id": "hf",
-      "t": 0.345,
+      "t": 0.3505,
       "when": "11–13 July 2026",
       "title": "Root in four regions",
       "text": "A poisoned dataset, two HDF5 zero-days and a template injection take them from a dataset pod to cluster-admin in under 13 hours.",
@@ -653,7 +819,7 @@
     },
     {
       "id": "hf",
-      "t": 0.107,
+      "t": 0.1125,
       "when": "6 Oct 2026",
       "title": "Three months on",
       "text": "A lawsuit, a Senate hearing, three bills and a shelved GPT model, with ten fronts still open.",
@@ -662,7 +828,7 @@
     },
     {
       "id": "midterm",
-      "t": 0.0274,
+      "t": 0.0329,
       "when": "4 Nov 2026, 1:20 a.m. ET",
       "title": "Congress flips",
       "text": "The AP calls the Senate for Democrats overnight, and the networks project the House too. By 1:20 a.m., seven Republican Senate seats had flipped.",
@@ -671,7 +837,7 @@
     },
     {
       "id": "prompts",
-      "t": 0.0055,
+      "t": 0.011,
       "when": "12 Nov 2026",
       "title": "Dashboards, taken apart",
       "text": "114 paste-ready prompts lifted from six dashboards and grouped by what they build: the maths, the look, the clicks, the data and the release.",
@@ -680,7 +846,7 @@
     },
     {
       "id": "midterm",
-      "t": -0.137,
+      "t": -0.1315,
       "when": "January 2027",
       "title": "Divided government begins",
       "text": "What changes in January: House committees and subpoena power move to Democrats, who plan oversight of the administration.",
@@ -698,7 +864,7 @@
     },
     {
       "id": "hf",
-      "t": 0.0849,
+      "t": 0.0904,
       "when": "14 Oct 2026",
       "title": "The FTC sends its demands",
       "text": "The FTC serves civil investigative demands of more than 50 pages each on OpenAI and Anthropic, seeking records on security incidents and safeguards.",
@@ -708,7 +874,7 @@
     },
     {
       "id": "hf",
-      "t": 0.0055,
+      "t": 0.011,
       "when": "12 Nov 2026",
       "title": "Nonprofits sue to freeze frontier AI",
       "text": "Four nonprofits ask a San Francisco court to stop OpenAI, Anthropic, Google, Meta and SpaceX’s AI unit from building models more capable than their current best.",
@@ -718,7 +884,7 @@
     },
     {
       "id": "midterm",
-      "t": 0.011,
+      "t": 0.0165,
       "when": "10 Nov 2026",
       "title": "Jordan to lead House Republicans",
       "text": "House Republicans choose Jim Jordan over Steve Scalise, 106–73, to lead them in the minority.",
@@ -728,7 +894,7 @@
     },
     {
       "id": "midterm",
-      "t": 0.0082,
+      "t": 0.0137,
       "when": "11 Nov 2026",
       "title": "Mississippi flips to Colom",
       "text": "The AP calls Mississippi for Scott Colom over Sen. Cindy Hyde-Smith: the eighth Republican seat to flip, for 55 Democratic seats with Alaska still counting.",
@@ -776,7 +942,7 @@
     },
     {
       "id": "first1000",
-      "t": 2.37,
+      "t": 2.3755,
       "when": "2024",
       "title": "Indonesia passes its 1,000-day law",
       "text": "Law No. 4/2024 gives mothers at least three months of leave and fathers two days, extendable by three.",
@@ -829,6 +995,101 @@
       "text": "Once publication bias is corrected, a meta-analysis puts the executive-function advantage at about zero.",
       "anchor": "#science-cognition",
       "sec": "The science"
+    },
+    {
+      "id": "hongwang",
+      "t": 109.4,
+      "when": "1917",
+      "title": "Kakeya asks about a needle",
+      "text": "Sōichi Kakeya asks for the smallest area in which a needle can be turned all the way around.",
+      "anchor": "#s-question",
+      "sec": "Kakeya’s question"
+    },
+    {
+      "id": "hongwang",
+      "t": 98.37,
+      "when": "1928",
+      "title": "No smallest area",
+      "text": "Abram Besicovitch shows the needle can be turned in as little area as you like.",
+      "anchor": "#s-besicovitch",
+      "sec": "There is no smallest area",
+      "row": -1
+    },
+    {
+      "id": "hongwang",
+      "t": 31.37,
+      "when": "1995",
+      "title": "Wolff’s hairbrush",
+      "text": "Thomas Wolff proves that needle sets in space have dimension at least 5/2. For 30 years the bound barely moves.",
+      "anchor": "#climb",
+      "sec": "The climb to 3"
+    },
+    {
+      "id": "hongwang",
+      "t": 1.724,
+      "when": "24 Feb 2025",
+      "title": "Kakeya in 3D is settled",
+      "text": "Hong Wang and Joshua Zahl post a 127-page proof that needle sets in space have the full dimension 3.",
+      "anchor": "#s-space",
+      "sec": "The same question in space"
+    },
+    {
+      "id": "hongwang",
+      "t": 0.316,
+      "when": "23 Jul 2026",
+      "title": "The Fields Medal",
+      "text": "Hong Wang becomes the third woman to win it, at the International Congress of Mathematicians in Philadelphia.",
+      "anchor": "#class",
+      "sec": "The class of 2026",
+      "row": 1
+    },
+    {
+      "id": "krakatau",
+      "t": 143.22,
+      "when": "27 Aug 1883",
+      "title": "Krakatau destroys itself",
+      "text": "Explosions and tsunamis kill 36,417 people and leave a drowned caldera about 240 m deep.",
+      "anchor": "#s-1883",
+      "sec": "Krakatau destroys itself"
+    },
+    {
+      "id": "krakatau",
+      "t": 98.88,
+      "when": "29 Dec 1927",
+      "title": "The child appears",
+      "text": "Eruptions begin on the caldera floor. A permanent island follows in 1930.",
+      "anchor": "#s-1927",
+      "sec": "Something grows in the hole",
+      "row": -1
+    },
+    {
+      "id": "krakatau",
+      "t": 7.9,
+      "when": "22 Dec 2018",
+      "title": "The cone falls into the sea",
+      "text": "A flank collapse sends a tsunami onto Banten and Lampung with no earthquake to warn anyone. 437 people die.",
+      "anchor": "#s-2018",
+      "sec": "It killed by falling over"
+    },
+    {
+      "id": "krakatau",
+      "t": 0.197,
+      "when": "4–6 Sep 2026",
+      "title": "Ash on Jakarta",
+      "text": "A 25-hour continuous eruption sends ash to about 15 km. Eight airports close and 2,961 flights are hit; there is no tsunami.",
+      "anchor": "#episode",
+      "sec": "The 2026 episode",
+      "row": 1
+    },
+    {
+      "id": "krakatau",
+      "t": 0.103,
+      "when": "9 Oct 2026",
+      "title": "Back to Level III",
+      "text": "After a spell at Level II, the alert goes back up: 5 km around the crater and 1 km around two new islets.",
+      "anchor": "#levels",
+      "sec": "Alert levels",
+      "row": -1
     }
   ]
 }
