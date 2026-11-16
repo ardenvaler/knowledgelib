@@ -1,0 +1,6 @@
+/* Library copy of "The First 1,000 Days": on short laptop screens the pinned right-hand panel
+   reaches the bottom-right corner, so the "← Library" button uses the bottom-left corner there
+   (nothing on this dashboard is pinned on the left). Loaded before the dashboard's own styles: keep !important. */
+@media (min-width: 981px) and (max-height: 780px) {
+  kl-back { --kl-right: auto !important; --kl-left: 14px !important; }
+}
