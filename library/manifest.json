@@ -1,7 +1,7 @@
 {
   "title": "Arden's Knowledge Library",
   "tagline": "Food for thought, shelved in one place.",
-  "lead": "{n} dashboards on things worth thinking about: how a baby’s brain grows, the first 1,000 days of life, raising a child in two languages, AI programs that escaped a test, the 2026 US elections, a slowing ocean current, ready-made instructions for building dashboards like these, a century-old puzzle about turning a needle, and a restless volcano in the Sunda Strait. Pick one to open it. The “← Library” button in the bottom-right corner of every dashboard brings you back here.",
+  "lead": "{n} dashboards on things worth thinking about: how a baby’s brain grows, the first 1,000 days of life, raising a child in two languages, AI programs that escaped a test, the 2026 US elections, a slowing ocean current, ready-made instructions for building dashboards like these, a century-old puzzle about turning a needle, a restless volcano in the Sunda Strait, and everything about cruise ships. Pick one to open it. The “← Library” button in the bottom-right corner of every dashboard brings you back here.",
   "today": "2026-11-16",
   "dashboards": [
     {
@@ -698,6 +698,131 @@
       ],
       "iso": "2026-11-16",
       "intro": "In September 2026 Anak Krakatau put ash on Jakarta and shut eight airports, and it is back at Level III. Scroll through 143 years of the volcano, then see why its real danger is a collapse into the sea, not a giant eruption."
+    },
+    {
+      "id": "cruise",
+      "title": "Sea Days",
+      "titleHtml": "Sea <em>Days</em>",
+      "short": "Sea Days",
+      "kind": "Holiday guide",
+      "topic": "Cruise ships",
+      "date": "16 Nov 2026",
+      "artifact": "https://claude.ai/artifact/PDR7vBvxhbXgocG5rmAAvE",
+      "blurb": "Everything about cruise ships: ocean, river and expedition trips and what they really cost, the biggest and the most remarkable ships afloat, how a floating town of nearly 10,000 runs, the money behind the business, and how to stay safe and well at sea.",
+      "facts": [
+        [
+          "37.3M",
+          "cruise passengers in 2025"
+        ],
+        [
+          "248,663",
+          "GT, the biggest ships"
+        ],
+        [
+          "{sources}",
+          "sources linked"
+        ]
+      ],
+      "bg": "#fbf3e4",
+      "ink": "#0e2a3f",
+      "span": [
+        114.5873,
+        -3.62
+      ],
+      "chips": [
+        "#h-cost",
+        "#ships",
+        "#inside",
+        "#h-flow"
+      ],
+      "sections": [
+        [
+          "Pick your kind of trip",
+          "#trips"
+        ],
+        [
+          "Where and when",
+          "#h-where"
+        ],
+        [
+          "The lines, side by side",
+          "#h-lines"
+        ],
+        [
+          "What it really costs",
+          "#h-cost"
+        ],
+        [
+          "The most remarkable ships afloat",
+          "#ships"
+        ],
+        [
+          "The race to the biggest ship",
+          "#h-race"
+        ],
+        [
+          "A floating town of nearly 10,000",
+          "#inside"
+        ],
+        [
+          "A week of groceries",
+          "#h-groceries"
+        ],
+        [
+          "The people who run it",
+          "#h-crew"
+        ],
+        [
+          "How a cruise line makes money",
+          "#money"
+        ],
+        [
+          "Follow your cruise dollar",
+          "#h-flow"
+        ],
+        [
+          "The crash and the comeback",
+          "#h-crash"
+        ],
+        [
+          "Who owns the seas",
+          "#h-owners"
+        ],
+        [
+          "A ship is a billion-dollar bet",
+          "#h-bets"
+        ],
+        [
+          "Private islands",
+          "#h-islands"
+        ],
+        [
+          "Safe and well at sea",
+          "#safety"
+        ],
+        [
+          "Pick a cabin, feel the motion",
+          "#h-motion"
+        ],
+        [
+          "What happens if…",
+          "#h-whatif"
+        ],
+        [
+          "Stomach bugs at sea",
+          "#h-bugs"
+        ],
+        [
+          "Lessons written in law",
+          "#h-law"
+        ],
+        [
+          "Numbers & sources",
+          "#sources"
+        ]
+      ],
+      "iso": "2026-11-16",
+      "intro": "Everything about cruise ships, in five sea days: the kinds of trips and what they really cost, the most remarkable ships afloat, how a floating town of nearly 10,000 runs, the money behind it all, and how to stay safe and well at sea."
     }
   ],
   "timeline": [
@@ -1089,6 +1214,75 @@
       "text": "After a spell at Level II, the alert goes back up: 5 km around the crater and 1 km around two new islets.",
       "anchor": "#levels",
       "sec": "Alert levels",
+      "row": -1
+    },
+    {
+      "id": "cruise",
+      "t": 114.5873,
+      "when": "15 Apr 1912",
+      "title": "Titanic sinks",
+      "text": "More than 1,500 people die on a liner without enough lifeboats for everyone aboard. The first Safety of Life at Sea treaty follows in 1914.",
+      "anchor": "#h-law",
+      "sec": "Lessons written in law"
+    },
+    {
+      "id": "cruise",
+      "t": 38.8337,
+      "when": "1988",
+      "title": "The first megaship",
+      "text": "Sovereign of the Seas, 73,192 GT, is the first cruise ship for more than 2,000 passengers. The race to the biggest ship begins.",
+      "anchor": "#h-race",
+      "sec": "The race to the biggest ship",
+      "row": -1
+    },
+    {
+      "id": "cruise",
+      "t": 16.9582,
+      "when": "2009",
+      "title": "Oasis of the Seas",
+      "text": "A leap of nearly half again, to 225,282 GT, with an open-air park and a boardwalk inside the ship.",
+      "anchor": "#h-race",
+      "sec": "The race to the biggest ship"
+    },
+    {
+      "id": "cruise",
+      "t": 6.6749,
+      "when": "14 Mar 2020",
+      "title": "Every ship stops",
+      "text": "The US CDC orders cruise ships to stop sailing. Passengers fall by about 80% and the three biggest companies lose about $20 billion between them that year.",
+      "anchor": "#h-crash",
+      "sec": "The crash and the comeback",
+      "row": 1
+    },
+    {
+      "id": "cruise",
+      "t": 2.8036,
+      "when": "27 Jan 2024",
+      "title": "Icon of the Seas sails",
+      "text": "The biggest cruise ship ever built, 248,663 GT, takes its first guests from Miami. Star (2025) and Legend (2026) follow.",
+      "anchor": "#ships",
+      "sec": "The most remarkable ships afloat",
+      "row": -1
+    },
+    {
+      "id": "cruise",
+      "t": 1.8727,
+      "t2": 0.8761,
+      "when": "2025",
+      "title": "A record year",
+      "text": "37.3 million ocean cruise passengers, the most ever, with 39.1 million forecast for 2026.",
+      "anchor": "#h-crash",
+      "sec": "The crash and the comeback",
+      "row": 1
+    },
+    {
+      "id": "cruise",
+      "t": -0.7064,
+      "when": "August 2027",
+      "title": "Hero of the Seas",
+      "text": "The fourth Icon-class ship is due in Miami. Carnival and Norwegian have their own giants of about 230,000 GT on order for 2029 and 2030.",
+      "anchor": "#h-race",
+      "sec": "The race to the biggest ship",
       "row": -1
     }
   ]

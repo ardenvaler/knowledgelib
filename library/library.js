@@ -37,6 +37,8 @@
   const BRIEFS = DASH.filter(d => d.id !== 'prompts');
   const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
   const word = n => WORDS[n] || String(n);
+  // keys 1-9 open the first nine dashboards, 0 the tenth
+  const KEYS = DASH.length > 9 ? '<kbd>1</kbd>–<kbd>9</kbd> and <kbd>0</kbd>' : `<kbd>1</kbd>–<kbd>${DASH.length}</kbd>`;
   const Word = n => { const w = word(n); return w.charAt(0).toUpperCase() + w.slice(1); };
   const ROOT = document.documentElement;
   // old links like #/amoc or #/amoc/ice now live at /amoc/ and /amoc/#ice
@@ -143,7 +145,7 @@
 
   /* ---------- the shelf ---------- */
   function renderShelf() {
-    $('#shelf-sub').innerHTML = `Each one opens on its own page. Press <kbd>1</kbd>–<kbd>${DASH.length}</kbd> to jump straight to one.`;
+    $('#shelf-sub').innerHTML = `Each one opens on its own page. Press ${KEYS} to jump straight to one.`;
     $('#shelf-grid').innerHTML = DASH.map((d, i) => `<a class="card d-${d.id}${i === 0 && DASH.length % 2 ? ' wide' : ''}" href="${pageOf(d.id)}" data-id="${d.id}">
         <span class="c-top"><span class="c-num">${d.num}</span><span class="c-tags"><b>${esc(d.kind)}</b> · ${esc(d.topic)}</span><span class="c-date">Updated ${esc(d.date)}</span></span>
         <h3 class="ct t-${d.id}">${d.titleHtml}</h3>
@@ -164,7 +166,7 @@
   function renderFoot() {
     $('#foot').innerHTML = `<div class="foot-in">
       <div><b>Arden’s Knowledge Library</b><p>${Word(DASH.length)} dashboards behind one PIN. Each opens on its own page and is a copy of its Claude artifact as of ${esc(new Date(DATA.built).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))}.</p></div>
-      <div class="keys"><span><kbd>1</kbd>–<kbd>${DASH.length}</kbd> open a dashboard</span><span><kbd>/</kbd> search all ${word(DASH.length)}</span><span>The <b>← Library</b> button on a dashboard brings you back</span></div>
+      <div class="keys"><span>${KEYS} open a dashboard</span><span><kbd>/</kbd> search all ${word(DASH.length)}</span><span>The <b>← Library</b> button on a dashboard brings you back</span></div>
       <button type="button" class="btn" data-lock>Lock the library</button>
     </div>`;
   }
@@ -583,7 +585,8 @@
     if (e.altKey) return;
     if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) { e.preventDefault(); Search.focus(); return; }
     if (typing || e.metaKey || e.ctrlKey) return;
-    if (/^[1-9]$/.test(e.key) && DASH[+e.key - 1]) go(DASH[+e.key - 1].id);
+    const n = e.key === '0' ? 10 : +e.key;
+    if (/^[0-9]$/.test(e.key) && DASH[n - 1]) go(DASH[n - 1].id);
   });
 
   /* ---------- go ---------- */
