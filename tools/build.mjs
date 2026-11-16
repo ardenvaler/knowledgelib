@@ -8,6 +8,8 @@
 //                          plus library/fixes/<id>.css when that file exists (small fixes to the
 //                          library's copy of a dashboard, e.g. buttons that jump on hover; they
 //                          come before the dashboard's own styles, so every rule needs !important)
+//                          and library/fixes/<id>.patch.json when that exists (exact find → replace
+//                          edits to the library's copy, e.g. a timeline that should wait for a tap)
 // All pages share one key: PBKDF2-SHA256(PIN, one 16-byte random salt per build, 600,000 rounds).
 // Each page gets its own random IV and is gzipped (level 9) before AES-256-GCM.
 // Unlocking any page stores the derived key in sessionStorage for this tab, so moving between
@@ -55,10 +57,23 @@ const landing = read('library/shell.html')
 if (/\{\{[A-Z]+\}\}/.test(landing.replace(/<script id="kl-data"[\s\S]*?<\/script>/, ''))) fail('A placeholder was left in the library page. Nothing was built.');
 
 const back = '<script>' + scriptSafe(read('library/back.js')) + '</script>';
+// Each patch must match exactly once. One whose replacement is already there is skipped, so the copy
+// that tools/unpack.mjs recovers (already patched) builds again; after a refresh they apply afresh.
+function patchFor(id, src) {
+  const f = `library/fixes/${id}.patch.json`;
+  if (!existsSync(resolve(ROOT, f))) return src;
+  JSON.parse(read(f)).forEach((p, i) => {
+    if (src.includes(p.replace)) return;
+    const n = src.split(p.find).length - 1;
+    if (n !== 1) fail(`${f}, edit ${i + 1} (${p.why}) matches ${n} places in content/dashboards/${id}.html instead of 1. Check it against the refreshed dashboard. Nothing was built.`);
+    src = src.replace(p.find, () => p.replace);
+  });
+  return src;
+}
 const fixesFor = id => existsSync(resolve(ROOT, `library/fixes/${id}.css`)) ? '<style id="kl-fixes">' + read(`library/fixes/${id}.css`).replace(/<\//g, '<\\/') + '</style>' : '';
 const pages = [{ path: 'index.html', html: landing, title: manifest.title, eyebrow: `${WORDS[manifest.dashboards.length] || manifest.dashboards.length} dashboards · one door`, sub: 'Enter the PIN to open the library.', bg: 'var(--bg)' }];
 for (const d of manifest.dashboards) {
-  const src = read(`content/dashboards/${d.id}.html`);
+  const src = patchFor(d.id, read(`content/dashboards/${d.id}.html`));
   if (!/<head(\s[^>]*)?>/i.test(src)) fail(`content/dashboards/${d.id}.html has no <head>. Nothing was built.`);
   pages.push({
     path: `${d.id}/index.html`,

@@ -26,7 +26,8 @@ Netlify project: `ardens-knowledge-library` (https://ardens-knowledge-library.ne
 | `library/shell.html`, `library.css`, `library.js` | The landing page and the Time Machine |
 | `library/page.html` | The PIN screen every published page starts as |
 | `library/back.js` | Added to every dashboard: the round Library button, opening at a linked section, outside links in a new tab |
-| `library/fixes/<id>.css` | Small fixes added to the library's copy of a dashboard: links and buttons that jumped under the pointer now stay put |
+| `library/fixes/<id>.css` | Small style fixes added to the library's copy of a dashboard: links and buttons that jumped under the pointer now stay put |
+| `library/fixes/<id>.patch.json` | Exact find → replace edits to the library's copy of a dashboard (e.g. Lise Eliot's timeline waits for a tap). The build stops if an edit no longer matches exactly once |
 | `tools/snapshot.mjs` | Opens each dashboard in Chromium and records its sections, headings and source count |
 | `tools/build.mjs` | Encrypts every page, checks each one decrypts, checks nothing readable leaked, and writes `dist/` |
 | `tools/unpack.mjs` | Decrypts `dist/` back into `content/` with the PIN |

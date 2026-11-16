@@ -1,7 +1,0 @@
-/* Library copy of "Two Languages, One Child": links and buttons stay put under the pointer.
-   They used to jump, slide or grow on hover, which made them flicker at their edges and miss clicks.
-   The chosen book on the bookshelf (.spine.on) still stands raised. Their colour and shadow changes stay.
-   Loaded before the dashboard's own styles: keep !important. */
-.btn:hover, .vtrio a:hover, .preset:hover, .play:hover, .sug:hover, .knt:hover, .space:hover, .lz-btn:hover,
-.spine:not(.on):hover, .sc-bar button:hover, .person:hover { transform: none !important; }
-.play:hover { filter: brightness(1.08) !important; }

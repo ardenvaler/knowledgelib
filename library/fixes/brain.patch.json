@@ -1,0 +1,12 @@
+[
+  {
+    "why": "The baby-brain timeline on the home page waits for a tap instead of starting by itself.",
+    "find": "const gv = new GrowthViz($(\"#sim\"), { variant: \"wide\", slider: true, autoplay: true });\n  gv.setT(0);",
+    "replace": "const gv = new GrowthViz($(\"#sim\"), { variant: \"wide\", slider: true, autoplay: false });\n  gv.setT(0);\n  gv.fromStart = true; // library copy: it waits for a tap, and the first press starts at conception"
+  },
+  {
+    "why": "The first press of play starts at conception, as the automatic run did, unless the reader has already moved the timeline.",
+    "find": "  play() {\n    if (!this.input) return;\n    if (+this.input.value >= 999) this.setT(T0);",
+    "replace": "  play() {\n    if (!this.input) return;\n    if (this.fromStart) { this.fromStart = false; if (this.t === 0) this.setT(T0); }\n    if (+this.input.value >= 999) this.setT(T0);"
+  }
+]
