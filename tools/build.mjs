@@ -4,7 +4,7 @@
 //
 // Every page is its own encrypted file:
 //   dist/index.html        the library (landing page)
-//   dist/<id>/index.html   each dashboard, with the round Library button (library/back.js) added,
+//   dist/<id>/index.html   each dashboard, with the "← Library" button (library/back.js) added,
 //                          plus library/fixes/<id>.css when that file exists (small fixes to the
 //                          library's copy of a dashboard, e.g. buttons that jump on hover; they
 //                          come before the dashboard's own styles, so every rule needs !important)

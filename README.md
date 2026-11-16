@@ -11,7 +11,7 @@ Netlify project: `ardens-knowledge-library` (https://ardens-knowledge-library.ne
 - **A landing page** with the shelf of seven. Each card has a short, plain intro to its dashboard. It also has a Time Machine
   you can drag across 122,000 years, Contents listing every section of every dashboard, and search across all of them.
 - **Each dashboard on its own page**: `/brain/`, `/first1000/`, `/bilingual/`, `/hf/`, `/midterm/`, `/amoc/`, `/prompts/`.
-  A small round button with the library's logo sits in the bottom-right corner of every dashboard, and the browser's Back button works as usual.
+  A dark **← Library** button sits in the bottom-right corner of every dashboard, and the browser's Back button works as usual.
   Both return you to the same spot on the landing page. Links to a section (`/amoc/#ice`) open right at it.
 - **One PIN per tab**: enter it once and every page in that tab opens without asking again, until the tab is closed or you
   press **Lock the library**. A page opened directly (a bookmark, a shared link) asks for the PIN first, then opens that page.
@@ -25,7 +25,7 @@ Netlify project: `ardens-knowledge-library` (https://ardens-knowledge-library.ne
 | `library/manifest.json` | The dashboards: titles, intros, kinds, colours, sections and Time Machine stops |
 | `library/shell.html`, `library.css`, `library.js` | The landing page and the Time Machine |
 | `library/page.html` | The PIN screen every published page starts as |
-| `library/back.js` | Added to every dashboard: the round Library button, opening at a linked section, outside links in a new tab |
+| `library/back.js` | Added to every dashboard: the ← Library button, opening at a linked section, outside links in a new tab |
 | `library/fixes/<id>.css` | Small style fixes added to the library's copy of a dashboard: links and buttons that jumped under the pointer now stay put |
 | `library/fixes/<id>.patch.json` | Exact find → replace edits to the library's copy of a dashboard (e.g. Lise Eliot's timeline waits for a tap). The build stops if an edit no longer matches exactly once |
 | `tools/snapshot.mjs` | Opens each dashboard in Chromium and records its sections, headings and source count |

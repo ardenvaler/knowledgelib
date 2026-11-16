@@ -79,7 +79,7 @@
 
   /* ---------- going to a dashboard ---------- */
   // Every dashboard is its own page. The library remembers where you were,
-  // so the round Library button on a dashboard brings you back to the same spot.
+  // so the "← Library" button on a dashboard brings you back to the same spot.
   const pageOf = (id, sec) => `/${id}/${sec || ''}`;
   const remember = () => { try { sessionStorage.setItem('kl.y', String(Math.round(scrollY))); } catch (e) { /* storage unavailable */ } };
   function go(id, sec) { if (!BY[id]) return; remember(); location.href = pageOf(id, sec); }
@@ -164,7 +164,7 @@
   function renderFoot() {
     $('#foot').innerHTML = `<div class="foot-in">
       <div><b>Arden’s Knowledge Library</b><p>${Word(DASH.length)} dashboards behind one PIN. Each opens on its own page and is a copy of its Claude artifact as of ${esc(new Date(DATA.built).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))}.</p></div>
-      <div class="keys"><span><kbd>1</kbd>–<kbd>${DASH.length}</kbd> open a dashboard</span><span><kbd>/</kbd> search all ${word(DASH.length)}</span><span>The round books button on a dashboard brings you back</span></div>
+      <div class="keys"><span><kbd>1</kbd>–<kbd>${DASH.length}</kbd> open a dashboard</span><span><kbd>/</kbd> search all ${word(DASH.length)}</span><span>The <b>← Library</b> button on a dashboard brings you back</span></div>
       <button type="button" class="btn" data-lock>Lock the library</button>
     </div>`;
   }

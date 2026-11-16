@@ -1,30 +1,27 @@
 /* Arden's Knowledge Library: the way back from a dashboard page.
-   Injected by tools/build.mjs into every dashboard. It adds one small round button with the
-   library's logo in the bottom-right corner (the one spot that covers no control on any
-   dashboard, at any size: checked on desktop, laptop and phone), opens outside links in a new
-   tab, and opens the page right at the section in the address (e.g. /amoc/#ice).
-   A dashboard's fixes file can move the button: kl-back { --kl-right: …; --kl-bottom: … } */
+   Injected by tools/build.mjs into every dashboard. It adds a dark "← Library" button in the
+   bottom-right corner, the spot that covers the fewest controls across all dashboards and
+   screen sizes. It also opens outside links in a new tab, and opens the page right at the
+   section in the address (e.g. /amoc/#ice).
+   A dashboard's fixes file can move the button, e.g. kl-back { --kl-bottom: 70px } or, for the
+   left corner, kl-back { --kl-right: auto; --kl-left: 14px }. */
 (function () {
   'use strict';
   if (window.__klBack) return;
   window.__klBack = true;
 
   var CSS = ':host{all:initial}' +
-    'a{position:fixed;right:calc(var(--kl-right,14px) + env(safe-area-inset-right,0px));bottom:calc(var(--kl-bottom,14px) + env(safe-area-inset-bottom,0px));' +
-    'z-index:2147483000;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;' +
-    'background:#fff;color:#191a33;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;' +
-    'box-shadow:0 6px 18px rgba(10,12,30,.28),0 0 0 1px rgba(25,26,51,.14);transition:background-color .15s,box-shadow .15s}' +
-    'a:hover{background:#f1effa;box-shadow:0 8px 22px rgba(10,12,30,.34),0 0 0 1px rgba(25,26,51,.24)}' +
+    'a{position:fixed;z-index:2147483000;bottom:calc(var(--kl-bottom,14px) + env(safe-area-inset-bottom,0px));' +
+    'right:calc(var(--kl-right,14px) + env(safe-area-inset-right,0px));left:calc(var(--kl-left) + env(safe-area-inset-left,0px));' +
+    'display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 16px 0 11px;border-radius:999px;' +
+    'background:#191a33;color:#fff;font:650 15px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.01em;text-decoration:none;white-space:nowrap;' +
+    // a white ring keeps it visible on dark dashboards too
+    'box-shadow:0 6px 18px rgba(10,12,30,.32),0 0 0 2px rgba(255,255,255,.9);' +
+    'cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background-color .15s}' +
+    'a:hover{background:#3a3c78}' +
     'a:focus-visible{outline:3px solid #6d68ff;outline-offset:3px}' +
-    'svg{width:28px;height:28px;display:block}' +
-    // the label sits beside the button and never catches the pointer, so the button itself never changes size
-    'span{position:absolute;right:calc(100% + 9px);top:50%;margin-top:-14px;height:28px;padding:0 11px;border-radius:8px;display:flex;align-items:center;' +
-    'background:#191a33;color:#fff;font:600 13.5px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;white-space:nowrap;' +
-    'box-shadow:0 4px 12px rgba(10,12,30,.25);opacity:0;pointer-events:none;transition:opacity .15s}' +
-    'a:hover span,a:focus-visible span{opacity:1}' +
-    '@media (hover:none){span{display:none}}' +
+    'svg{width:18px;height:18px;flex:none}' +
     '@media print{a{display:none}}';
-  var LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="4.6" height="19" rx="1.4" fill="#D97524"/><rect x="8.6" y="5" width="4.6" height="22" rx="1.4" fill="#E0AC00"/><rect x="14.2" y="9" width="4.6" height="18" rx="1.4" fill="#2A57C4"/><rect x="19.8" y="6" width="4.6" height="21" rx="1.4" fill="#5B5CE6"/><rect x="25.4" y="10" width="4.6" height="17" rx="1.4" fill="#0B7A5E" transform="rotate(12 27.7 27)"/><rect x="1.5" y="27.4" width="29" height="2.2" rx="1.1" fill="currentColor" opacity=".55"/></svg>';
 
   function goHome(e) {
     if (e) e.preventDefault();
@@ -32,14 +29,30 @@
     location.href = '/';
   }
 
+  var host = null;
   function mount() {
-    if (!document.body || document.querySelector('kl-back')) return;
-    var host = document.createElement('kl-back');
-    var root = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
-    root.innerHTML = '<style>' + CSS + '</style>' +
-      '<a href="/" aria-label="Back to Arden’s Knowledge Library">' + LOGO + '<span>Library</span></a>';
-    root.querySelector('a').addEventListener('click', goHome);
+    if (!document.body || (host && host.isConnected)) return;
+    if (!host) {
+      host = document.createElement('kl-back');
+      var root = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
+      root.innerHTML = '<style>' + CSS + '</style>' +
+        '<a href="/" aria-label="Back to Arden’s Knowledge Library">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>' +
+        'Library</a>';
+      root.querySelector('a').addEventListener('click', goHome);
+    }
     document.body.appendChild(host);
+  }
+  // Put it in as early as possible, and put it back if it ever goes missing: some browsers skip
+  // DOMContentLoaded on a page that was written in after the PIN, and a dashboard may redraw its body.
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+  addEventListener('load', mount);
+  setTimeout(mount, 400);
+  setTimeout(mount, 1500);
+  if (window.MutationObserver) {
+    new MutationObserver(function () { if (host && !host.isConnected) mount(); })
+      .observe(document.documentElement, { childList: true, subtree: true });
   }
 
   // outside links open in a new tab, so the dashboard stays where it was
@@ -94,6 +107,4 @@
     addEventListener('load', function () { rescue(); setTimeout(release, 2500); });
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
-  else mount();
 })();
