@@ -1,8 +1,8 @@
 {
   "title": "Arden's Knowledge Library",
   "tagline": "Food for thought, shelved in one place.",
-  "lead": "{n} dashboards on things worth thinking about: how a baby’s brain grows, the first 1,000 days of life, raising a child in two languages, AI programs that escaped a test, the 2026 US elections, a slowing ocean current, ready-made instructions for building dashboards like these, a century-old puzzle about turning a needle, a restless volcano in the Sunda Strait, and everything about cruise ships. Pick one to open it. The “← Library” button in the bottom-right corner of every dashboard brings you back here.",
-  "today": "2026-11-16",
+  "lead": "{n} dashboards on things worth thinking about: how a baby’s brain grows, the first 1,000 days of life, raising a child in two languages, AI programs that escaped a test, the 2026 US elections, a slowing ocean current, ready-made instructions for building dashboards like these, a century-old puzzle about turning a needle, a restless volcano in the Sunda Strait, everything about cruise ships, and how the airwaves your phone uses are carved up and sold. Pick one to open it. The “← Library” button in the bottom-right corner of every dashboard brings you back here.",
+  "today": "2026-11-20",
   "dashboards": [
     {
       "id": "brain",
@@ -32,7 +32,7 @@
       "ink": "#1b1e45",
       "span": [
         27.5,
-        0.8755
+        0.8865
       ],
       "chips": [
         "#development",
@@ -96,7 +96,7 @@
       "ink": "#2a1a28",
       "span": [
         35.9,
-        2.3755
+        2.3865
       ],
       "chips": [
         "#days",
@@ -186,7 +186,7 @@
       "ink": "#1a1830",
       "span": [
         113.9,
-        0.9055
+        0.9165
       ],
       "chips": [
         "#mixer",
@@ -265,8 +265,8 @@
       "bg": "#080b11",
       "ink": "#edf1f7",
       "span": [
-        0.5285,
-        0.011
+        0.5395,
+        0.022
       ],
       "chips": [
         "#h-open",
@@ -355,7 +355,7 @@
       "ink": "#131821",
       "span": [
         92,
-        -0.1315
+        -0.1205
       ],
       "chips": [
         "#senate",
@@ -508,8 +508,8 @@
       "bg": "#eceef1",
       "ink": "#14161a",
       "span": [
-        0.011,
-        0.011
+        0.022,
+        0.022
       ],
       "chips": [
         "#library",
@@ -561,7 +561,7 @@
       "ink": "#e9eef8",
       "span": [
         109.4,
-        0.316
+        0.327
       ],
       "chips": [
         "#turn",
@@ -638,7 +638,7 @@
       "ink": "#e6e4dd",
       "span": [
         143.22,
-        0
+        0.011
       ],
       "chips": [
         "#scale",
@@ -823,6 +823,151 @@
       ],
       "iso": "2026-11-16",
       "intro": "Everything about cruise ships, in five sea days: the kinds of trips and what they really cost, the most remarkable ships afloat, how a floating town of nearly 10,000 runs, the money behind it all, and how to stay safe and well at sea."
+    },
+    {
+      "id": "spectrum",
+      "title": "Selling the Airwaves",
+      "titleHtml": "Selling the <em>Airwaves</em>",
+      "short": "Selling the Airwaves",
+      "kind": "Explainer",
+      "topic": "Telecoms",
+      "date": "20 Nov 2026",
+      "artifact": "https://claude.ai/artifact/3w1KBc5iY7EmJYczWAcWg8",
+      "blurb": "How mobile spectrum works: what radio spectrum is, why low and high frequencies behave so differently, how the world and each country divide the airwaves into bands and blocks, how auctions sell them for billions, and how it all works in Indonesia, including the July 2026 700 MHz and 2.6 GHz auction.",
+      "facts": [
+        [
+          "$81.2B",
+          "the record auction, US 2021"
+        ],
+        [
+          "712 MHz",
+          "Indonesia’s mobile spectrum"
+        ],
+        [
+          "{sources}",
+          "sources linked"
+        ]
+      ],
+      "bg": "#f2efe6",
+      "ink": "#141824",
+      "span": [
+        161.5086,
+        -0.9774
+      ],
+      "chips": [
+        "#h-tune",
+        "#h-zoom",
+        "#h-game",
+        "#h-who"
+      ],
+      "sections": [
+        [
+          "Waves you can’t see",
+          "#ch1"
+        ],
+        [
+          "Tune a wave",
+          "#h-tune"
+        ],
+        [
+          "Low waves travel, high waves carry",
+          "#ch2"
+        ],
+        [
+          "Cover a city",
+          "#h-cover"
+        ],
+        [
+          "Why operators want all three",
+          "#h-layers"
+        ],
+        [
+          "What distance and a wall cost",
+          "#h-loss"
+        ],
+        [
+          "Slicing the air",
+          "#ch3"
+        ],
+        [
+          "From the whole world to one licence",
+          "#h-zoom"
+        ],
+        [
+          "Two ways to share a lane",
+          "#h-duplex"
+        ],
+        [
+          "Who may use a lane",
+          "#h-rules"
+        ],
+        [
+          "Where new lanes come from",
+          "#h-free"
+        ],
+        [
+          "Going once, going twice",
+          "#ch4"
+        ],
+        [
+          "Before auctions",
+          "#h-before"
+        ],
+        [
+          "Run an auction",
+          "#h-game"
+        ],
+        [
+          "Four ways to run one",
+          "#h-formats"
+        ],
+        [
+          "The big ones",
+          "#h-famous"
+        ],
+        [
+          "What a megahertz costs",
+          "#h-perpop"
+        ],
+        [
+          "When auctions go wrong",
+          "#h-wrong"
+        ],
+        [
+          "Indonesia’s airwaves",
+          "#ch5"
+        ],
+        [
+          "Who holds what",
+          "#h-who"
+        ],
+        [
+          "What they pay",
+          "#h-pay"
+        ],
+        [
+          "Auctions and plans",
+          "#h-id"
+        ],
+        [
+          "The next land grab",
+          "#ch6"
+        ],
+        [
+          "A century and a half of spectrum",
+          "#h-century"
+        ],
+        [
+          "Four fights to watch",
+          "#h-future"
+        ],
+        [
+          "Numbers & sources",
+          "#sources"
+        ]
+      ],
+      "iso": "2026-11-20",
+      "intro": "What mobile spectrum actually is, how the airwaves are carved into lanes, and how governments auction them to phone companies for billions. Tune a radio wave, zoom from the whole spectrum down to one licence, run your own auction, then see how it all works in Indonesia."
     }
   ],
   "timeline": [
@@ -905,7 +1050,7 @@
     },
     {
       "id": "brain",
-      "t": 0.8755,
+      "t": 0.8865,
       "when": "Through 2025",
       "title": "The research check",
       "text": "Every chapter is checked against work published through 2025. Of 43 findings, 6 hold up, 10 are refined, 17 are revised, 2 are overturned and 8 are new since 1999.",
@@ -914,7 +1059,7 @@
     },
     {
       "id": "hf",
-      "t": 0.5285,
+      "t": 0.5395,
       "when": "7 May 2026",
       "title": "10,000 agents, safeties off",
       "text": "OpenAI starts a cyber evaluation in what it called a highly isolated environment. Model safeguards are switched off on purpose.",
@@ -923,8 +1068,8 @@
     },
     {
       "id": "hf",
-      "t": 0.4555,
-      "t2": 0.3655,
+      "t": 0.4665,
+      "t2": 0.3765,
       "when": "May → July 2026",
       "title": "A secret message board",
       "text": "A request-forgery bug gives the agents write access to the internal package cache. They turn it into a hidden message board.",
@@ -934,7 +1079,7 @@
     },
     {
       "id": "hf",
-      "t": 0.3505,
+      "t": 0.3615,
       "when": "11–13 July 2026",
       "title": "Root in four regions",
       "text": "A poisoned dataset, two HDF5 zero-days and a template injection take them from a dataset pod to cluster-admin in under 13 hours.",
@@ -944,7 +1089,7 @@
     },
     {
       "id": "hf",
-      "t": 0.1125,
+      "t": 0.1235,
       "when": "6 Oct 2026",
       "title": "Three months on",
       "text": "A lawsuit, a Senate hearing, three bills and a shelved GPT model, with ten fronts still open.",
@@ -953,7 +1098,7 @@
     },
     {
       "id": "midterm",
-      "t": 0.0329,
+      "t": 0.0439,
       "when": "4 Nov 2026, 1:20 a.m. ET",
       "title": "Congress flips",
       "text": "The AP calls the Senate for Democrats overnight, and the networks project the House too. By 1:20 a.m., seven Republican Senate seats had flipped.",
@@ -962,7 +1107,7 @@
     },
     {
       "id": "prompts",
-      "t": 0.011,
+      "t": 0.022,
       "when": "12 Nov 2026",
       "title": "Dashboards, taken apart",
       "text": "114 paste-ready prompts lifted from six dashboards and grouped by what they build: the maths, the look, the clicks, the data and the release.",
@@ -971,7 +1116,7 @@
     },
     {
       "id": "midterm",
-      "t": -0.1315,
+      "t": -0.1205,
       "when": "January 2027",
       "title": "Divided government begins",
       "text": "What changes in January: House committees and subpoena power move to Democrats, who plan oversight of the administration.",
@@ -989,7 +1134,7 @@
     },
     {
       "id": "hf",
-      "t": 0.0904,
+      "t": 0.1014,
       "when": "14 Oct 2026",
       "title": "The FTC sends its demands",
       "text": "The FTC serves civil investigative demands of more than 50 pages each on OpenAI and Anthropic, seeking records on security incidents and safeguards.",
@@ -999,7 +1144,7 @@
     },
     {
       "id": "hf",
-      "t": 0.011,
+      "t": 0.022,
       "when": "12 Nov 2026",
       "title": "Nonprofits sue to freeze frontier AI",
       "text": "Four nonprofits ask a San Francisco court to stop OpenAI, Anthropic, Google, Meta and SpaceX’s AI unit from building models more capable than their current best.",
@@ -1009,7 +1154,7 @@
     },
     {
       "id": "midterm",
-      "t": 0.0165,
+      "t": 0.0275,
       "when": "10 Nov 2026",
       "title": "Jordan to lead House Republicans",
       "text": "House Republicans choose Jim Jordan over Steve Scalise, 106–73, to lead them in the minority.",
@@ -1019,7 +1164,7 @@
     },
     {
       "id": "midterm",
-      "t": 0.0137,
+      "t": 0.0247,
       "when": "11 Nov 2026",
       "title": "Mississippi flips to Colom",
       "text": "The AP calls Mississippi for Scott Colom over Sen. Cindy Hyde-Smith: the eighth Republican seat to flip, for 55 Democratic seats with Alaska still counting.",
@@ -1067,7 +1212,7 @@
     },
     {
       "id": "first1000",
-      "t": 2.3755,
+      "t": 2.3865,
       "when": "2024",
       "title": "Indonesia passes its 1,000-day law",
       "text": "Law No. 4/2024 gives mothers at least three months of leave and fathers two days, extendable by three.",
@@ -1151,7 +1296,7 @@
     },
     {
       "id": "hongwang",
-      "t": 1.724,
+      "t": 1.735,
       "when": "24 Feb 2025",
       "title": "Kakeya in 3D is settled",
       "text": "Hong Wang and Joshua Zahl post a 127-page proof that needle sets in space have the full dimension 3.",
@@ -1160,7 +1305,7 @@
     },
     {
       "id": "hongwang",
-      "t": 0.316,
+      "t": 0.327,
       "when": "23 Jul 2026",
       "title": "The Fields Medal",
       "text": "Hong Wang becomes the third woman to win it, at the International Congress of Mathematicians in Philadelphia.",
@@ -1198,7 +1343,7 @@
     },
     {
       "id": "krakatau",
-      "t": 0.197,
+      "t": 0.208,
       "when": "4–6 Sep 2026",
       "title": "Ash on Jakarta",
       "text": "A 25-hour continuous eruption sends ash to about 15 km. Eight airports close and 2,961 flights are hit; there is no tsunami.",
@@ -1208,7 +1353,7 @@
     },
     {
       "id": "krakatau",
-      "t": 0.103,
+      "t": 0.114,
       "when": "9 Oct 2026",
       "title": "Back to Level III",
       "text": "After a spell at Level II, the alert goes back up: 5 km around the crater and 1 km around two new islets.",
@@ -1256,7 +1401,7 @@
     },
     {
       "id": "cruise",
-      "t": 2.8036,
+      "t": 2.8146,
       "when": "27 Jan 2024",
       "title": "Icon of the Seas sails",
       "text": "The biggest cruise ship ever built, 248,663 GT, takes its first guests from Miami. Star (2025) and Legend (2026) follow.",
@@ -1266,8 +1411,8 @@
     },
     {
       "id": "cruise",
-      "t": 1.8727,
-      "t2": 0.8761,
+      "t": 1.8837,
+      "t2": 0.8871,
       "when": "2025",
       "title": "A record year",
       "text": "37.3 million ocean cruise passengers, the most ever, with 39.1 million forecast for 2026.",
@@ -1277,13 +1422,100 @@
     },
     {
       "id": "cruise",
-      "t": -0.7064,
+      "t": -0.6954,
       "when": "August 2027",
       "title": "Hero of the Seas",
       "text": "The fourth Icon-class ship is due in Miami. Carnival and Norwegian have their own giants of about 230,000 GT on order for 2029 and 2030.",
       "anchor": "#h-race",
       "sec": "The race to the biggest ship",
       "row": -1
+    },
+    {
+      "id": "spectrum",
+      "t": 161.5086,
+      "when": "17 May 1865",
+      "title": "The ITU is born",
+      "text": "Twenty states found the International Telegraph Union in Paris. It later becomes the UN agency that keeps the world’s radio rules.",
+      "anchor": "#h-century",
+      "sec": "A century and a half of spectrum"
+    },
+    {
+      "id": "spectrum",
+      "t": 120.0465,
+      "when": "3 Nov 1906",
+      "title": "The first radio treaty",
+      "text": "The Berlin radiotelegraph convention sets the first international radio rules and adopts SOS as the distress call.",
+      "anchor": "#h-century",
+      "sec": "A century and a half of spectrum",
+      "row": -1
+    },
+    {
+      "id": "spectrum",
+      "t": 114.2697,
+      "when": "13 Aug 1912",
+      "title": "Every transmitter needs a licence",
+      "text": "Months after the Titanic sinks, the US Radio Act requires a licence for every radio transmitter.",
+      "anchor": "#ch1",
+      "sec": "Waves you can’t see",
+      "row": 1
+    },
+    {
+      "id": "spectrum",
+      "t": 67.3895,
+      "when": "1959",
+      "title": "Sell the airwaves, says an economist",
+      "text": "Ronald Coase argues that spectrum should be priced and sold like any other resource instead of handed out free.",
+      "anchor": "#h-before",
+      "sec": "Before auctions"
+    },
+    {
+      "id": "spectrum",
+      "t": 32.3121,
+      "when": "July 1994",
+      "title": "The first US spectrum auction",
+      "text": "Ten nationwide paging licences sell over 47 rounds for $617 million, in a format designed by the economists Paul Milgrom and Robert Wilson.",
+      "anchor": "#h-formats",
+      "sec": "Four ways to run one",
+      "row": -1
+    },
+    {
+      "id": "spectrum",
+      "t": 26.5654,
+      "when": "April 2000",
+      "title": "The £22.5 billion 3G auction",
+      "text": "The UK sells five 3G licences after 150 rounds, at about €650 per person. Germany follows with €50.5 billion; operators are left deep in debt.",
+      "anchor": "#h-famous",
+      "sec": "The big ones",
+      "row": 1
+    },
+    {
+      "id": "spectrum",
+      "t": 5.755,
+      "when": "February 2021",
+      "title": "The $81 billion auction",
+      "text": "The US sells 280 MHz of C-band spectrum for 5G for $81.2 billion in gross bids, the most ever. Verizon bids $45.5 billion.",
+      "anchor": "#h-famous",
+      "sec": "The big ones"
+    },
+    {
+      "id": "spectrum",
+      "t": 0.334,
+      "when": "21 Jul 2026",
+      "title": "Indonesia’s biggest auction",
+      "text": "Telkomsel, Indosat and XLSmart share 260 MHz at 700 MHz and 2.6 GHz, lifting Indonesia’s mobile spectrum from 452 to 712 MHz.",
+      "anchor": "#h-id",
+      "sec": "Auctions and plans",
+      "row": -1
+    },
+    {
+      "id": "spectrum",
+      "t": -0.909,
+      "when": "18 Oct–12 Nov 2027",
+      "title": "WRC-27 in Shanghai",
+      "text": "The next world radio conference decides on new bands for 6G and on satellites that talk directly to phones.",
+      "anchor": "#h-future",
+      "sec": "Four fights to watch",
+      "row": 1
     }
   ]
 }

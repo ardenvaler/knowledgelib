@@ -145,7 +145,7 @@
 
   /* ---------- the shelf ---------- */
   function renderShelf() {
-    $('#shelf-sub').innerHTML = `Each one opens on its own page. Press ${KEYS} to jump straight to one.`;
+    $('#shelf-sub').innerHTML = `Each one opens on its own page. Press ${KEYS} to jump straight to ${DASH.length > 10 ? 'one of the first ten' : 'one'}.`;
     $('#shelf-grid').innerHTML = DASH.map((d, i) => `<a class="card d-${d.id}${i === 0 && DASH.length % 2 ? ' wide' : ''}" href="${pageOf(d.id)}" data-id="${d.id}">
         <span class="c-top"><span class="c-num">${d.num}</span><span class="c-tags"><b>${esc(d.kind)}</b> · ${esc(d.topic)}</span><span class="c-date">Updated ${esc(d.date)}</span></span>
         <h3 class="ct t-${d.id}">${d.titleHtml}</h3>
@@ -166,7 +166,7 @@
   function renderFoot() {
     $('#foot').innerHTML = `<div class="foot-in">
       <div><b>Arden’s Knowledge Library</b><p>${Word(DASH.length)} dashboards behind one PIN. Each opens on its own page and is a copy of its Claude artifact as of ${esc(new Date(DATA.built).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))}.</p></div>
-      <div class="keys"><span>${KEYS} open a dashboard</span><span><kbd>/</kbd> search all ${word(DASH.length)}</span><span>The <b>← Library</b> button on a dashboard brings you back</span></div>
+      <div class="keys"><span>${KEYS} open ${DASH.length > 10 ? 'the first ten' : 'a dashboard'}</span><span><kbd>/</kbd> search all ${word(DASH.length)}</span><span>The <b>← Library</b> button on a dashboard brings you back</span></div>
       <button type="button" class="btn" data-lock>Lock the library</button>
     </div>`;
   }
